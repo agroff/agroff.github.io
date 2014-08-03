@@ -25,6 +25,12 @@ p{
     box-shadow: #222 0px 2px 10px;
     padding: 1px 35px 306px 35px;
 }
+.small a,
+.small a:link,
+.small a:visited
+{
+    color:#555;
+}
 .small{
     text-align:center;
     color:#888;
@@ -92,6 +98,10 @@ button {
     background-color: #ffefd5;
     border-radius: 5px;
     padding:5px;
+}
+#weightGraphAge{
+    width:200px;
+    float:right;
 }
 .clear{
     clear:both;
