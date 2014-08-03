@@ -1,0 +1,121 @@
+
+
+
+
+
+html {
+    font-family:arial;
+}
+body{
+    margin: 0;
+    padding: 0px;
+    background : url("img/bg.png");
+}
+p{
+    text-align: justify;
+    font-size:16px;
+    line-height: 22px;
+    color:#444;
+}
+#mainColumnContainer{
+    background-color: #F7F7F7;
+    margin: auto;
+    max-width: 650px;
+    margin-top: 0;
+    box-shadow: #222 0px 2px 10px;
+    padding: 1px 35px 306px 35px;
+}
+.small{
+    text-align:center;
+    color:#888;
+    font-size:11px;
+}
+.header {
+    padding:10px;
+    background-color: #444;
+    color:#FFF;
+    border-bottom:1px solid #111;
+}
+h1,
+h2,
+h3,
+h4
+{
+    color:#333;
+    font-weight: normal;
+}
+select{
+    background: none;
+    height:30px;
+    font-size: 16px;
+    line-height: 20px;
+    padding:5px;
+}
+.header h2 {
+    margin:0;
+    margin-left:10px;
+    font-size:28px;
+    color:#fff;
+}
+input {
+    height:20px;
+    font-size:16px;
+    padding:4px;
+    width:75%;
+}
+button {
+    float: right;
+    text-transform: uppercase;
+    width: 20%;
+    background-color: #444;
+    color: #fff;
+    font-size: 17px;
+    padding: 5px;
+    border: 1px solid #111;
+    border-radius: 4px;
+    margin: 0px;
+}
+.reddcoinIcon {
+    margin-right: 20px;
+    width: 30px;
+    float: left;
+}
+#results{
+    margin-top:20px;
+}
+#errorMessage {
+    margin-top:10px;
+    display:none;
+    font-size:12px;
+    text-align:center;
+    border:1px solid #ff6462;
+    background-color: #ffefd5;
+    border-radius: 5px;
+    padding:5px;
+}
+.clear{
+    clear:both;
+}
+.resultText,
+.resultAmount{
+    padding:5px;
+    width:40%;
+    float:left;
+    color:#444;
+}
+.resultAmount{
+    text-align:right;
+    color:#111;
+    width:32%;
+}
+
+.mainContainer {
+    padding:20px;
+    border:1px solid #999;
+    border-top:none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-bottom:50px;
+    background-color: #fff;
+
+}

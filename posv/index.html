@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Understanding PoSV</title>
+
+    <link rel="stylesheet" type="text/css" href="css/posv.css">
+
+    <link rel="shortcut icon" href="img/icon.png" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/Chart.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/BasicCalculatorView.js"></script>
+    <script type="text/javascript" src="js/BasicCalculator.js"></script>
+    <script type="text/javascript" src="js/WeightChartView.js"></script>
+    <script type="text/javascript" src="js/CoinWeight.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+</head>
+<body>
+
+
+<div id="mainColumnContainer">
+
+    <h1>
+        Understanding PoSV
+    </h1>
+
+    <p>
+        In its most basic form, we can think of PoSV simply as compounding interest. It was designed to offer 5-6%
+        interest, compounding every time you mint (produce new coins). For a rough approximation of returns, we will calculate the returns
+        for 5% interest compounded daily.
+    </p>
+
+    <div class="header">
+        <h2>
+            <img src="http://i.imgur.com/8z5IK9G.png" alt="Reddcoin Icon" class="reddcoinIcon" />
+            Reddcoin Stake Calculator
+        </h2>
+
+    </div>
+    <div class="mainContainer">
+        <input type="text" id="initialRdd" />
+        <button id="calculateButton">Calculate</button>
+        <div id="errorMessage">^ This should be a number.</div>
+        <div id="results">
+            <p>Enter your total Reddcoin above to see your stake returns.</p>
+        </div>
+    </div>
+
+    <p class="small">
+        I'm not positive this is accurate.
+        If it's wrong please fix it and/or blame hoppi.
+    </p>
+
+    <h2>
+        Isn't it a bit more complicated than that?
+    </h2>
+
+    <p>
+        It is of course. Since your interest compounds every time you mint, we first need to understand when, or how
+        often, you mint.
+    </p>
+
+    <p>
+        To determine when you'll mint next, PoSV creates something called "Coin Weight." To determine your chance of
+        being the next person to mint new coins, we compare the total weight of all your coins to the total weight of
+        all coins which are actively staking.
+    </p>
+
+    <p>
+        The total weight of all active coins can be considered the total number of
+        "lottery tickets," and your total weight is the number of tickets you have. Every minute a winner is chosen to
+        mint. Those with the highest weight are more likely to win on any given draw. Once you win, the weight of the
+        coins that minted get reset and you move back in the line.
+    </p>
+
+    <h2>
+        So how is weight calculated?
+    </h2>
+
+    <p>
+        The calculation of coin weight is the core of PoSV. Like traditional PoS, the weight is a product of total coins
+        (stake) and the average age of those coins. In contrast to traditional PoS, which calculates weight as a linear
+        product of age, PoSV uses an algorithm where new coins gain weight quickly, and old coins gain weight increasingly
+        slowly. This is how PoSV offers a big incentive to be active.
+    </p>
+
+    <p>
+        To see the PoSV algorithm in action, we can look at a graph of coin weight over time (coin age).
+    </p>
+
+    <select id="weightGraphAge">
+        <option value="3">3 Days</option>
+        <option value="7">7 Days</option>
+        <option value="10">10 Days</option>
+        <option value="30">30 Days</option>
+        <option value="90">90 Days</option>
+        <option value="120">120 Days</option>
+        <option value="365">365 Days</option>
+    </select>
+
+    <canvas id="weightChart" width="650" height="400"></canvas>
+
+
+
+</div>
+
+
+
+<script type="text/html" id="resultRowTemplate">
+    <div class="resultText">
+        Estimated ${label} gain:
+    </div>
+    <div class="resultAmount">
+        ${amount} RDD
+    </div>
+    <hr class="clear" />
+</script>
+
+</body>
+</html>
