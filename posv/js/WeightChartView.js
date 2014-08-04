@@ -50,7 +50,7 @@
         }
 
         pri.chartInstance = pri.Chart.Line(data, options);
-    }
+    };
 
     pub.initialize = function(){
         var ctx = $("#weightChart").get(0).getContext("2d");

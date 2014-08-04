@@ -73,6 +73,88 @@
         mint. Those with the highest weight are more likely to win on any given draw. Once you win, the weight of the
         coins that minted get reset and you move back in the line.
     </p>
+	
+	<h2>
+		What is <i>staking</i> ?
+	</h2>
+	
+	<p>
+		Complete here the definition of <i>staking</i>
+	</p>
+	
+	<h2>
+		What is <i>coinage</i> ?
+	</h2>
+	
+	<p>
+		Explain <i>coinage</i> here
+	</p>
+
+	<h2>
+		What is the <i>network weight</i> ? the <i>total weight</i> > what is the <i>expected time</i> until next reward ?
+	</h2>
+	
+	<p>
+		You can see those information at the bottom right of your wallet if you let your mouse hover over the green arrow 
+		which indicates that your wallet is currently staking.
+	</p>
+	
+	<p>
+		According to the reddcoin protocol, every minute there's a lottery going on, 
+		which will result in a block being discovered.
+	</p>
+	
+	<p>
+		The <i>network weight</i> can be understood as the number of tickets available for this lottery. 
+		In practice the network weight is the sum of "coinage" of all the coins which are staking at this moment accross 
+		the entire network. 
+		Let's call this number NW (for "network weight").
+	</p>
+	
+	<p>
+		Now your <i>total weight</i> is the number of tickets <i>you</i> own which allow you to participate in this lottery. 
+		It is calculated by summing up all the coinage of the coins which are staking in your wallet. 
+		Let's call this number TW (for "total weight").
+	</p>
+
+	<p>	
+		Now you need to know that this lottery is <i>fair</i> in the sense that each "ticket" is equally likely to win 
+		on the next round. The details by which the winner is found is internal to the protocol implementation and it 
+		is not necessary to explain it here. 
+	</p>
+	
+	<p>
+		That being said, since different participants own different number of 
+		those tickets, the more of them you own, the quicker you can expect to be a winner, this is the <i>expected time</i> 
+		until your next reward. Of course the lottery is random so nothing is 100% certain. It could effectively take less time 
+		(if you're lucky) or more time (if you're less lucky :P) than the expected time for your to effectively win. But in the long
+		run, those differences average out and you would see that the expected time is pretty accurate (as long as you keep your
+		wallet online 24/7).
+	</p>
+	
+	<p>	
+		To be more mathematically specific, on each minute round you have a chance TW/TN to be the lucky winner. It is
+		a simple result that as a consequence the expected time to be a winner is TN/TW minutes. 
+	</p>	
+		
+	<p>
+		Just to put things back in the context of posv, winning here means discovering a block which will not only award you 
+		those precious RDD but will also validate the most recent transactions for the network. 
+		That's how you get rewarded for providing a useful service to the community!
+	</p>	
+		
+	<p>
+		Let's now see how these things work in practice. Let's assume that right now the network weight is about 13B (13,000,000,000)
+		and that your total weight is 100m (100,000,000). According to what we explained above the expected time will be
+	</p>
+	<p>
+		13B/100m = 130minutes
+	</p>
+	
+	<p>
+		so in expectation to get a reward, it would take you about 2hrs in that case. Check it with your wallet and see
+		if the formula works!
+	</p>
 
     <h2>
         So how is weight calculated?

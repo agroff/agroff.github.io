@@ -78,7 +78,7 @@
             labels : labels
         };
 
-        console.log(result)
+        console.log(result);
         return result;
     };
 
