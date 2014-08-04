@@ -14,25 +14,15 @@
             labels: dataset.labels,
             datasets: [
                 {
-                    label: "My Second dataset",
+                    label: "bla",
                     fillColor: "rgba(151,187,205,0.2)",
                     strokeColor: "rgba(151,187,205,1)",
                     pointColor: "rgba(151,187,205,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: dataset.weights
-                },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#ff0000",
-                    pointHighlightFill: "#ff0000",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: dataset.posWeights
-                }              
+                    data: dataset.posvThetas
+                }     
             ]
         };
     };
@@ -63,16 +53,16 @@
     };
 
     pub.initialize = function(){
-        var ctx = $("#weightChart").get(0).getContext("2d");
+        var ctx = $("#thetaChart").get(0).getContext("2d");
         pri.context = ctx;
         pri.Chart = new Chart(ctx);
 
-        $("#weightGraphAge").change(function(){
+        $("#thetaGraphAge").change(function(){
             var value = $(this).val();
             pri.dayChangedCallback(value);
         });
     };
 
-exports.WeightChartView = pub;
+exports.ThetaChartView = pub;
 
 }(exports));

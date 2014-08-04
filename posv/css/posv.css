@@ -9,7 +9,7 @@ html {
 body{
     margin: 0;
     padding: 0px;
-    background : url("img/bg.png");
+    background : url("../img/bg.png");
 }
 p{
     text-align: justify;
@@ -100,6 +100,26 @@ button {
     padding:5px;
 }
 #weightGraphAge{
+    width:200px;
+    float:right;
+}
+.clear{
+    clear:both;
+}
+.resultText,
+.resultAmount{
+    padding:5px;
+    width:40%;
+    float:left;
+    color:#444;
+}
+.resultAmount{
+    text-align:right;
+    color:#111;
+    width:32%;
+}
+
+#thetaGraphAge{
     width:200px;
     float:right;
 }

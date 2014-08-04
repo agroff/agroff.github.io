@@ -34,11 +34,19 @@ RDD.controllers.weightChart = function(){
 
 };
 
-
+RDD.controllers.thetaChart = function(){
+    RDD.ThetaChartView.initialize();
+    RDD.ThetaChartView.setDayCallback(function(days){
+        var dataset = RDD.CoinWeight.getDataSet(1, days, 20);
+        RDD.ThetaChartView.render(dataset);
+    });
+    $("#thetaGraphAge").val("90").trigger("change");
+};
 
 $(function () {
 
     RDD.controllers.basicCalculator();
+    RDD.controllers.thetaChart();
     RDD.controllers.weightChart();
 
 });

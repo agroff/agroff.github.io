@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/BasicCalculatorView.js"></script>
     <script type="text/javascript" src="js/BasicCalculator.js"></script>
     <script type="text/javascript" src="js/WeightChartView.js"></script>
+    <script type="text/javascript" src="js/ThetaChartView.js"></script>
     <script type="text/javascript" src="js/CoinWeight.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
 </head>
@@ -183,17 +184,42 @@
 
     <canvas id="weightChart" width="650" height="400"></canvas>
 
+    <p>
+        For the first week, you can see that coin weight is a linear function of coin age that grows faster than POS. 
+        On the other hand even though coins continue to accrue weight with time, they do a slower and slower pace
+        compared to POS.
+    </p>
+    
+	<p>
+		In order to better visualise the relative speed at which POSV and POS accrue weight for their coisn, 
+		the next graph shows the <i>ratio</i> of POSV to POS weights. The peak of 1.2 means that at
+		1 week, the coins which stake in the POSV wallet accrue weight 20% <i>faster</i> than their POS counterpart.
+	</p>
+	
+	<p>
+		On the other hand after 2 weeks the POSV coins start to accrue weight <i>slower</i> than POS. This is why it is
+		said that POSV encourages staking over a relatively short period of time compared to POS.
+	</p>
+
+    <select id="thetaGraphAge">
+        <option value="3">3 Day Coin Age</option>
+        <option value="7">7 Day Coin Age</option>
+        <option value="10">10 Day Coin Age</option>
+        <option value="31">30 Day Coin Age</option>
+        <option value="90">90 Day Coin Age</option>
+        <option value="120">120 Day Coin Age</option>
+        <option value="360">365 Day Coin Age</option>
+    </select>
+
+    <canvas id="thetaChart" width="650" height="400"></canvas>
+
+
     <p class="small">
         Chart rendered with an adapted version of the
         <a href="https://github.com/reddcoin-project/reddcoin/blob/master/src/kernel.cpp#L73" target="_blank">
             weight algorithm from reddcoin's source.
         </a>
 
-    </p>
-
-    <p>
-        For the first week, you can see that coin weight is a linear function of coin age. The older the coin, the less
-        weight it earns as time goes on.
     </p>
 
     <h2>
