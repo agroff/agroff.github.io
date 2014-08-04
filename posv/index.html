@@ -3,6 +3,7 @@
 <head>
     <title>Understanding PoSV</title>
 
+    <link rel="stylesheet" type="text/css" href="css/Entypo/entypo.css">
     <link rel="stylesheet" type="text/css" href="css/posv.css">
 
     <link rel="shortcut icon" href="img/icon.png" />
@@ -15,6 +16,7 @@
     <script type="text/javascript" src="js/WeightChartView.js"></script>
     <script type="text/javascript" src="js/ThetaChartView.js"></script>
     <script type="text/javascript" src="js/CoinWeight.js"></script>
+    <script type="text/javascript" src="js/Expandables.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
 </head>
 <body>
@@ -63,47 +65,109 @@
     </p>
 
     <p>
-        To determine when you'll mint next, PoSV creates something called "Coin Weight." To determine your chance of
-        being the next person to mint new coins, we compare the total weight of all your coins to the total weight of
-        all coins which are actively staking.
+        It's easiest to think about this in terms of a lottery. Everyone with reddcoins has many "lottery tickets."
+        Approximately every minute, one lottery ticket is chosen, and whoever wins gets awarded newly created coins.
     </p>
 
     <p>
-        The total weight of all active coins can be considered the total number of
-        "lottery tickets," and your total weight is the number of tickets you have. Every minute a winner is chosen to
-        mint. Those with the highest weight are more likely to win on any given draw. Once you win, the weight of the
-        coins that minted get reset and you move back in the line.
+        If you have reddcoins in your wallet, you have some lottery tickets. Whoever has the most lottery tickets has
+        the best chance of winning. To enter the lottery just make sure your wallet is <i>staking</i>, and it will enter
+        the drawing for you every minute.
     </p>
-	
-	<h2>
+    <p>
+        Before we can understand how many tickets each person gets, we'll need to review
+        a few important concepts.
+    </p>
+
+    <hr>
+
+	<h3>
 		What is <i>staking</i> ?
-	</h2>
+	</h3>
 	
 	<p>
-		Complete here the definition of <i>staking</i>
-	</p>
-	
-	<h2>
-		What is <i>coinage</i> ?
-	</h2>
-	
-	<p>
-		Explain <i>coinage</i> here
+		Staking is the process your wallet uses to validate transactions and award you with coins. When your wallet is
+        staking, it is checking transactions to make sure everyone who sends coins actually owned those coins and had the
+        right to transfer them. If most of the wallets online agree that a transaction is valid, then it gets accepted
+        by the network. This concept of consensus is essential to all digital currencies, and is what keeps Reddcoin secure.
 	</p>
 
-	<h2>
-		What is the <i>network weight</i> ? <i>total weight</i> ? what is the <i>expected time</i> until next reward ?
-	</h2>
+
+    <div class="tip" title="Tip: How to Stake">
+        <p>
+            In order to stake, ensure that your wallet is encrypted and unlocked. By keeping your wallet open, it will
+            stake automatically.
+        </p>
+        <p>
+            When you encrypt your wallet, make sure to use a strong password that you will never
+            forget. You cannot recover your password or coins if you forget your password.
+        </p>
+    </div>
+
+	<p>
+        As a reward for keeping the network secure, every minute one person is chosen to receive some interest on the
+        coins they own. Whoever has the most "lottery tickets" has the best chance of winning the award.
+	</p>
+    <p>
+        In Reddcoin terms, your lottery tickets are referred to as your <i>weight</i>, and your weight is a product
+        of <i>coinage</i>.
+    </p>
+
+	
+	<h3>
+		What is <i>coinage</i> ?
+	</h3>
 	
 	<p>
-		You can see those information at the bottom right of your wallet if you let your mouse hover over the green arrow 
-		which indicates that your wallet is currently staking.
+		Quite simply, <i>coinage</i> is the age of your coins. Imagine you get a new wallet and start out with zero coins.
+        On Monday, your friend sends you 5,000 coins. On Wednesday, you decide to buy 10,000 more coins and withdraw them
+        to your wallet.
 	</p>
+
+	<p>
+        Assuming it's Thursday, you'll have two groups of coins. The first group of 5,000 has 3 days of coin age,
+        and the second group of 10,000 coins has 1 day of coin age.
+	</p>
+
+	<p>
+        When coins are sent to another address or successfully stake (generate interest), their coin age is reset.
+	</p>
+
+    <div class="info" title="More Info: Staking by Group">
+        <p>
+            It's important to recognize that staking happens in groups. So, following our example above, if your first
+            group of 5,000 coins stakes, you'll get an interest payed on those 5,000 coins, not your entire balance of
+            15,000 coins.
+        </p>
+        <p>
+            Additionally, coin age will be reset on your group of 5,000, but coinage on your second group of 10,000 will
+            continue to grow until they stake or are used in a transaction.
+        </p>
+    </div>
+
+    <hr>
+
+	<h2>
+		What is the <i>network weight</i>, <i>total weight</i>, and <i>expected time</i> until next reward ?
+	</h2>
+
+    <div class="tip" title="Tip: View Weight Information">
+        <p>
+            In your reddcoin wallet, you can view weight information at the bottom right of your wallet if you let your
+            mouse hover over the green arrow which indicates that your wallet is currently staking.
+        </p>
+    </div>
 	
 	<p>
 		According to the reddcoin protocol, every minute there's a lottery going on, 
 		which will result in a block being discovered.
 	</p>
+
+    <div class="info" title="More Info: What's a Block?">
+        <p>
+            TODO: Brief description of block.
+        </p>
+    </div>
 	
 	<p>
 		The <i>network weight</i> can be understood as the number of tickets available for this lottery. 

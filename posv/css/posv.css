@@ -13,9 +13,67 @@ body{
 }
 p{
     text-align: justify;
-    font-size:16px;
+    font-size:15px;
     line-height: 22px;
     color:#444;
+}
+a,
+a:link,
+a:visited
+{
+    text-decoration: none;
+}
+a:hover span.title
+{
+    text-decoration: underline;
+}
+.strong{
+    font-weight: bold;
+}
+.entypo{
+    font-size: 1.5em;
+}
+a,
+a:link,
+a:visited,
+.reddRed{
+    color: #ed1c24;
+}
+
+div.info,
+div.tip{
+    margin-top:10px;
+    background-color: #fff;
+    border-radius : 4px;
+    padding:8px;
+    border:1px solid #C9C9C9;
+    display:none;
+}
+
+div.info h3,
+div.tip h3{
+    text-transform: uppercase;
+    color:#666;
+    float:left;
+    margin:0;
+    margin-right:10px;
+    font-weight: bold;
+    font-size:1.8em;
+}
+
+
+div.tip h3 .entypo,
+div.info h3 .entypo{
+    font-size: 3em;
+    line-height: .7em;
+}
+
+div.info p,
+div.tip p{
+    margin-top:0;
+    padding:0 10px;
+    font-style: italic;
+    font-size:0.8em;
 }
 #mainColumnContainer{
     background-color: #F7F7F7;
@@ -49,6 +107,9 @@ h4
 {
     color:#333;
     font-weight: normal;
+}
+h3,h4,h5,h6{
+    font-weight: bold;
 }
 select{
     background: none;

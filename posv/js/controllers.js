@@ -49,4 +49,6 @@ $(function () {
     RDD.controllers.thetaChart();
     RDD.controllers.weightChart();
 
+    RDD.Expandables.initialize();
+
 });
