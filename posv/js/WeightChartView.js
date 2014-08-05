@@ -14,7 +14,7 @@
             labels: dataset.labels,
             datasets: [
                 {
-                    label: "PoS Weights",
+                    label: "PoS Coin Age",
                     fillColor: "rgba(151,187,205,0.2)",
                     strokeColor: "#97BBCD",
                     pointColor: "#97BBCD",
@@ -24,7 +24,7 @@
                     data: dataset.posWeights
                 },
                 {
-                    label: "PoSV Weights",
+                    label: "PoSV Weighted Coin Age",
                     fillColor: "rgba(151,187,205,0.2)",
                     strokeColor: "#ff0000",
                     pointColor: "#ff0000",

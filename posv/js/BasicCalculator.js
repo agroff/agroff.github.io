@@ -14,10 +14,10 @@
         },
         pub = {};
 
-    pub.calculate = function (initialRedd) {
+    pub.calculate = function (initialRedd, compoundTimes) {
         // According to hoppi
         // Total = currentRDD * (1+(0.06/365)) ** 365
-        var totalMints = pri.formulaSettings.totalMints,
+        var totalMints = compoundTimes || pri.formulaSettings.totalMints,
             percent = (pri.formulaSettings.percentReturn / 100),
             total = initialRedd * Math.pow((1 + (percent / totalMints)), totalMints);
 

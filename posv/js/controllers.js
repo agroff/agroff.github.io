@@ -5,10 +5,10 @@ RDD.controllers.basicCalculator = function(){
 
     RDD.BasicCalculatorView.bind();
 
-    RDD.BasicCalculatorView.setValidNumberCallback(function (initialRedd) {
+    RDD.BasicCalculatorView.setValidNumberCallback(function (initialRedd, compoundTimes) {
         var annual, weekly, daily;
 
-        RDD.BasicCalculator.calculate(initialRedd);
+        RDD.BasicCalculator.calculate(initialRedd, compoundTimes);
 
         annual = RDD.BasicCalculator.getAnnual();
         weekly = RDD.BasicCalculator.getWeekly();
@@ -50,5 +50,6 @@ $(function () {
     RDD.controllers.weightChart();
 
     RDD.Expandables.initialize();
+    RDD.RewardTime.bind();
 
 });

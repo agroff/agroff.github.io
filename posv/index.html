@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Understanding PoSV</title>
 
@@ -15,6 +15,7 @@
     <script type="text/javascript" src="js/BasicCalculator.js"></script>
     <script type="text/javascript" src="js/WeightChartView.js"></script>
     <script type="text/javascript" src="js/ThetaChartView.js"></script>
+    <script type="text/javascript" src="js/RewardTime.js"></script>
     <script type="text/javascript" src="js/CoinWeight.js"></script>
     <script type="text/javascript" src="js/Expandables.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
@@ -24,14 +25,34 @@
 
 <div id="mainColumnContainer">
 
+    <div class="notification">
+        <h4>Alert: Unverified Work in Progress.</h4>
+        <p>
+            Much of the information here is compiled from the
+            <a href="https://github.com/reddcoin-project/reddcoin" target="_blank">Reddcoin Source Code</a>, the
+            <a href="http://www.reddcoin.com/papers/PoSV.pdf" target="_blank">Reddcoin White Paper</a>, and the original
+            <a href="http://www.peercoin.net/assets/paper/peercoin-paper.pdf" target="_blank">PoS White Paper</a>.
+        </p>
+        <p>
+            That said, other bits may be things I've heard from places I can't remember. Essentially internet rumors.
+            We will attempt to note these cases but there are no guarantees. Nothing written in this guide should be
+            considered gospel until it's verified by a developer.
+        </p>
+
+        <p>
+            Contributions and corrections are welcomed with open arms. You can contribute at
+            <a href="https://github.com/agroff/agroff.github.io" target="_blank">the repository.</a>
+        </p>
+    </div>
+
     <h1>
         Understanding PoSV
     </h1>
 
     <p>
         In its most basic form, we can think of PoSV simply as compounding interest. It was designed to offer 5-6%
-        interest, compounding every time you mint (produce new coins). For a rough approximation of returns, we will calculate the returns
-        for 5% interest compounded daily.
+        interest, compounding every time you stake (produce new coins). For a rough approximation of returns under near
+        optimal conditions, we will calculate the returns for 5% interest compounded daily.
     </p>
 
     <div class="header">
@@ -42,7 +63,13 @@
 
     </div>
     <div class="mainContainer">
-        <input type="text" id="initialRdd" />
+        <input type="text" id="initialRdd" placeholder="Total RDD" />
+        <select id="compoundTimes">
+            <option value="1">Compounded 1 Time</option>
+            <option value="12">Compounded 12 Times</option>
+            <option value="52">Compounded 52 Times</option>
+            <option value="365" selected="selected">Compounded 365 Times</option>
+        </select>
         <button id="calculateButton">Calculate</button>
         <div id="errorMessage">^ This should be a number.</div>
         <div id="results">
@@ -60,8 +87,24 @@
     </h2>
 
     <p>
-        It is of course. Since your interest compounds every time you mint, we first need to understand when, or how
-        often, you mint.
+        It is of course. Under PoSV, your returns are greatly influenced by how often you successfully stake. This is
+        due to the mathematical formula of PoSV, and not a product of how often your interest is compounded.
+    </p>
+
+    <div class="info" title="More Info: How Important is Compounding">
+        <p>
+            Not very important. While compounding your interest more times does result in more coins, this is not
+            a relevant incentive of PoSV.
+        </p>
+        <p>
+            To demonstrate, we can use the calculator above to calculate interest on 1 million coins compounded one time
+            versus 365 times. The difference is about 1,267 coins, or 0.13%. This example uses two very extreme cases
+            and the difference is still relatively insignificant. In practice, the difference will be even less.
+        </p>
+    </div>
+
+    <p>
+        To begin understanding PoSV, we need to first understand when, or how often, you stake.
     </p>
 
     <p>
@@ -109,17 +152,17 @@
         coins they own. Whoever has the most "lottery tickets" has the best chance of winning the award.
 	</p>
     <p>
-        In Reddcoin terms, your lottery tickets are referred to as your <i>weight</i>, and your weight is a product
-        of <i>coinage</i>.
+        In Reddcoin terms, your lottery tickets are referred to as your "Weighted Coin Age" or simply <i>weight</i>, and
+        your weight is a non-linear product of <i>coin age</i>.
     </p>
 
 	
 	<h3>
-		What is <i>coinage</i> ?
+		What is <i>coin age</i> ?
 	</h3>
 	
 	<p>
-		Quite simply, <i>coinage</i> is the age of your coins. Imagine you get a new wallet and start out with zero coins.
+		Quite simply, <i>coin age</i> is the age of your coins. Imagine you get a new wallet and start out with zero coins.
         On Monday, your friend sends you 5,000 coins. On Wednesday, you decide to buy 10,000 more coins and withdraw them
         to your wallet.
 	</p>
@@ -158,22 +201,47 @@
         </p>
     </div>
 	
-	<p>
+	<p id="whatsablock">
 		According to the reddcoin protocol, every minute there's a lottery going on, 
-		which will result in a block being discovered.
+		which will result in a single block being discovered.
 	</p>
 
     <div class="info" title="More Info: What's a Block?">
         <p>
-            TODO: Brief description of block.
+            A block is essentially a group of Reddcoin transactions. When you stake, your wallet attempts to "Solve"
+            the current block by making a guess about an unknown password which unlocks the block. It takes a lot of guesses
+            to find the password, but once you find it, you inform all the other wallets that you found the block and tell
+            them the password you discovered.
+        </p>
+
+        <p>
+            The other wallets will check that password to make sure it actually unlocks the block. When enough of them
+            report back that your password was correct, you have solved the block and as a reward you get paid interest.
+        </p>
+
+        <p>
+            In PoSV, the more coin weight you have, the easier it is for you to guess the password. Each block has many
+            "passwords" and it's possible that two people solve the same block. When this happens, Reddcoin will give the
+            award to the person who has the most coin weight.
         </p>
     </div>
-	
+
+    <!--
+
+    This was written quickly to generate the tickets image. Please Ignore. Keeping it incase the image needs an update.
+    <div id="tickets" style="width:200px;"> </div>
+    <script type="text/javascript">
+        var $div = $("#tickets")
+        for(var i = 0; i <= 103; i++){
+            $div.append("<img src=\"img/icon.png\" style='width:15px;'>");
+        }
+    </script>
+    -->
+
 	<p>
 		The <i>network weight</i> can be understood as the number of tickets available for this lottery. 
-		In practice the network weight is the sum of "coinage" of all the coins which are staking at this moment accross 
-		the entire network. 
-		Let's call this number NW (for "network weight").
+		In practice the network weight is the sum of "weighted coin age" of all the coins which are staking at this
+        moment accross the entire network. Let's call this number NW (for "network weight").
 	</p>
 	
 	<p>
@@ -182,31 +250,82 @@
 		Let's call this number TW (for "total weight").
 	</p>
 
+    <div class="imageContainer">
+
+        <img src="img/tickets.png" alt="A representation of tickets owned.">
+
+        <p class="small">
+            A visual representation of your "Tickets" compared to total tickets.
+        </p>
+    </div>
+
 	<p>	
 		Now you need to know that this lottery is <i>fair</i> in the sense that each "ticket" is equally likely to win 
-		on the next round. The details by which the winner is found is internal to the protocol implementation and it 
-		is not necessary to explain it here. 
+		on the next round. The details by which the winner is found is internal to the protocol implementation, but a
+        simplified explanation can be found in the
+        <a href="#whatsablock">"What's a Block?" info section.</a>
 	</p>
 	
 	<p>
 		That being said, since different participants own different number of 
 		those tickets, the more of them you own, the quicker you can expect to be a winner, this is the <i>expected time</i> 
 		until your next reward. Of course the lottery is random so nothing is 100% certain. It could effectively take less time 
-		(if you're lucky) or more time (if you're less lucky :P) than the expected time for your to effectively win. But in the long
+		(if you're lucky) or more time (if you're less lucky :P) than the expected time for you to actually win. But in the long
 		run, those differences average out and you would see that the expected time is pretty accurate (as long as you keep your
 		wallet online 24/7).
 	</p>
 	
 	<p>	
-		To be more mathematically specific, on each minute round you have a chance TW/TN to be the lucky winner. It is
-		a simple result that as a consequence the expected time to be a winner is TN/TW minutes. 
-	</p>	
-		
-	<p>
-		Just to put things back in the context of posv, winning here means discovering a block which will not only award you 
-		those precious RDD but will also validate the most recent transactions for the network. 
-		That's how you get rewarded for providing a useful service to the community!
-	</p>	
+		To be more mathematically specific, on each minute round you have a chance NW/TW to be the lucky winner. It is
+		a simple result that as a consequence the expected time to be a winner is NW/TW minutes.
+	</p>
+
+
+    <div class="header">
+        <h2>
+            <img src="http://i.imgur.com/8z5IK9G.png" alt="Reddcoin Icon" class="reddcoinIcon" />
+            Expected Time Until Reward
+        </h2>
+    </div>
+
+    <div class="mainContainer" id="expectedRewardContainer">
+        <div id="timeErrorMessage">All fields should contain numbers.</div>
+        <div id="timeForm">
+
+            <label> Your Total Weight </label>
+            <input type="text" id="totalWeight" value="100,000,000" />
+
+            <label> Total Network Weight </label>
+            <input type="text" id="networkWeight" value="13,000,000,000" />
+
+            <br>
+            <button id="calculateRewardTime">Calculate</button>
+        </div>
+
+        <div id="timeResults">
+            <label>Expected time to earn a reward in:</label>
+
+            <div class="pad-top">
+                Minutes: <span id="rewardMinutes"></span>
+            </div>
+
+            <div class="pad-top">
+                Hours: <span id="rewardHours"></span>
+            </div>
+
+            <div class="pad-top">
+                Days: <span id="rewardDays"></span>
+            </div>
+
+        </div>
+        <br class="clear">
+    </div>
+
+    <p class="small">
+        To access these numbers in your wallet, you can go to Help -> Debug Window and type "getstakinginfo". It will
+        show you staking numbers that can be easily copied and pasted.
+    </p>
+
 		
 	<p>
 		Let's now see how these things work in practice. Let's assume that right now the network weight is about 13B (13,000,000,000)
@@ -220,6 +339,13 @@
 		so in expectation to get a reward, it would take you about 2hrs in that case. Check it with your wallet and see
 		if the formula works!
 	</p>
+
+
+    <p>
+        Just to put things back in the context of posv, winning here means discovering a block which will not only award you
+        those precious RDD but will also validate the most recent transactions for the network.
+        That's how you get rewarded for providing a useful service to the community!
+    </p>
 
     <h2>
         So how is weight calculated?

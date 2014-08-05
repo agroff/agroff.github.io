@@ -20,7 +20,8 @@
 
     pri.calculateClicked = function () {
         var value = pri.$initialRdd.val(),
-            initialRedd = parseFloat(value.replace(/,/g, ''));
+            initialRedd = parseFloat(value.replace(/,/g, '')),
+            compoundTimes = $("#compoundTimes").val();
 
         pri.$errorMessage.hide();
         pub.clear();
@@ -29,7 +30,7 @@
             pri.$errorMessage.show("slow");
             return;
         }
-        pri.validNumberCallback(initialRedd);
+        pri.validNumberCallback(initialRedd, compoundTimes);
     };
 
     pub.setValidNumberCallback = function (callback) {

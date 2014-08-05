@@ -94,6 +94,9 @@ div.tip p{
     color:#888;
     font-size:11px;
 }
+.pad-top{
+    padding-top:10px;
+}
 .header {
     padding:10px;
     background-color: #444;
@@ -113,8 +116,8 @@ h3,h4,h5,h6{
 }
 select{
     background: none;
-    height:30px;
-    font-size: 16px;
+    height:32px;
+    font-size: 13px;
     line-height: 20px;
     padding:5px;
 }
@@ -128,12 +131,12 @@ input {
     height:20px;
     font-size:16px;
     padding:4px;
-    width:75%;
+    width:90%;
 }
 button {
-    float: right;
+    transition: background-color 0.5s ease;
     text-transform: uppercase;
-    width: 20%;
+    cursor: pointer;
     background-color: #444;
     color: #fff;
     font-size: 17px;
@@ -142,14 +145,51 @@ button {
     border-radius: 4px;
     margin: 0px;
 }
+button:hover{
+    background-color: #555;
+}
+
+.imageContainer p.small{
+    line-height:1.4em;
+}
+.imageContainer{
+    border-radius: 2px;
+    border: 1px solid #CCC;
+    margin: 10px;
+    background-color: #FFF;
+    padding: 10px;
+    float: left;
+    width: 33%;
+    margin-top: 5px;
+}
+
+.mainContainer select{
+    width: 36%;
+}
 .reddcoinIcon {
     margin-right: 20px;
     width: 30px;
     float: left;
 }
+#calculateButton{
+    float: right;
+    width: 20%;
+}
 #results{
     margin-top:20px;
 }
+#initialRdd{
+    width:40%;
+}
+#timeForm input{
+    display: block;
+    margin-bottom: 10px;
+}
+#expectedRewardContainer{
+    padding-bottom:20px;
+}
+div.notification,
+#timeErrorMessage,
 #errorMessage {
     margin-top:10px;
     display:none;
@@ -159,6 +199,29 @@ button {
     background-color: #ffefd5;
     border-radius: 5px;
     padding:5px;
+}
+#timeErrorMessage{
+    margin-top:0px;
+    margin-bottom:10px;
+}
+#timeForm,
+#timeResults{
+    width:48%;
+    float:left;
+}
+div.notification p{
+    margin: 5px 0px;
+    font-size:1em;
+    line-height: 1.4em;
+}
+div.notification h4{
+    font-size: 1.2em;
+    margin:8px 0px;
+}
+div.notification{
+    text-align:left;
+    display: block;
+    padding:5px 20px;
 }
 #weightGraphAge{
     width:200px;
