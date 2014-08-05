@@ -14,24 +14,24 @@
             labels: dataset.labels,
             datasets: [
                 {
-                    label: "My Second dataset",
+                    label: "PoS Weights",
                     fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
+                    strokeColor: "#97BBCD",
+                    pointColor: "#97BBCD",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: dataset.weights
+                    pointHighlightStroke: "#97BBCD",
+                    data: dataset.posWeights
                 },
                 {
-                    label: "My Second dataset",
+                    label: "PoSV Weights",
                     fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#ff0000",
-                    pointHighlightFill: "#ff0000",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: dataset.posWeights
+                    strokeColor: "#ff0000",
+                    pointColor: "#ff0000",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "#ff0000",
+                    data: dataset.weights
                 }              
             ]
         };
@@ -56,10 +56,12 @@
             options = pri.getOptions();
 
         if(pri.chartInstance !== false){
+            $(".line-legend").remove();
             pri.chartInstance.destroy();
         }
 
         pri.chartInstance = pri.Chart.Line(data, options);
+        $("#weightChart").before(pri.chartInstance.generateLegend());
     };
 
     pub.initialize = function(){

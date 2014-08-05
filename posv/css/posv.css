@@ -210,3 +210,22 @@ button {
     background-color: #fff;
 
 }
+
+ul.line-legend{
+    padding-left:10px;
+    color:#666;
+    font-size:13px;
+    list-style-type: none;
+}
+ul.line-legend li{
+    margin-top: 3px;
+    list-style-type: none;
+    padding-right: 20px;
+}
+ul.line-legend span{
+    margin-right: 5px;
+    padding:0 6px;
+}
+ul.line-legend span:after{
+    content:' '
+}

@@ -19,7 +19,12 @@
             weight = 8.4 * Math.log(days) - 7.94564525;
         }
 
-        return Math.max(0, Math.round(Math.min((weight * 24 * 60 * 60), stakeMaxAge)));
+        //weight = (weight * 24 * 60 * 60)
+        weight = Math.min(weight, stakeMaxAge);
+        //weight = Math.round(weight);
+        //weight = weight.toFixed(2);
+
+        return Math.max(0, weight);
     };
     
     pri.calculatePOSWeight = function(hoursOld){
@@ -27,7 +32,10 @@
             days = ( (hoursOld - stakeMinAgeHours) / 24),
             weight = days;
 
-        return Math.max(0, weight * 24 * 60 * 60);
+        //weight = (weight * 24 * 60 * 60);
+        //weight = weight.toFixed(2);
+
+        return Math.max(0, weight);
     };  
 
     pri.calculatePOSVWeightTheta = function(hoursOld){
@@ -75,15 +83,15 @@
             result = days;
         }
 
-        if(weeks > 1){
-            type = "Weeks";
-            result = weeks;
-        }
-
-        if(months > 1){
-            type = "Months";
-            result = months;
-        }
+//        if(weeks > 1){
+//            type = "Weeks";
+//            result = weeks;
+//        }
+//
+//        if(months > 1){
+//            type = "Months";
+//            result = months;
+//        }
 
         return result.toFixed(1) + " " + type;
     };
@@ -116,8 +124,8 @@
             posTheta = pri.calculatePOSWeightTheta(currentAge) * coinAmount;
             label = pri.getLabel(currentAge);
 
-            weights.push(weight);
-            posWeights.push(posWeight);
+            weights.push(weight.toFixed(2));
+            posWeights.push(posWeight.toFixed(2));
             posvThetas.push(posvTheta);
             posThetas.push(posTheta);
             labels.push(label);
