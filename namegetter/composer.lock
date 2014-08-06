@@ -1,0 +1,68 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "8faae6440a198cf1ac0cbc3b4d429302",
+    "packages": [
+        {
+            "name": "groff/command",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agroff/Command.git",
+                "reference": "24cd66b4c8cd1194b6521ece58ea3a02530cf3f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agroff/Command/zipball/24cd66b4c8cd1194b6521ece58ea3a02530cf3f6",
+                "reference": "24cd66b4c8cd1194b6521ece58ea3a02530cf3f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Groff": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Groff",
+                    "email": "andrew.p.groff@gmail.com",
+                    "homepage": "http://groff.co",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A minimal CLI framework for PHP",
+            "keywords": [
+                "cli",
+                "command",
+                "command line"
+            ],
+            "time": "2014-02-11 11:33:42"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "groff/command": 20
+    },
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": [
+
+    ]
+}
