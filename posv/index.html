@@ -11,6 +11,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/Chart.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/helpers.js"></script>
     <script type="text/javascript" src="js/BasicCalculatorView.js"></script>
     <script type="text/javascript" src="js/BasicCalculator.js"></script>
     <script type="text/javascript" src="js/WeightChartView.js"></script>
@@ -18,6 +19,7 @@
     <script type="text/javascript" src="js/RewardTime.js"></script>
     <script type="text/javascript" src="js/CoinWeight.js"></script>
     <script type="text/javascript" src="js/Expandables.js"></script>
+    <script type="text/javascript" src="js/PosvSimulator.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
 </head>
 <body>
@@ -414,7 +416,7 @@
     </p>
     
 	<p>
-		In order to better visualise the relative speed at which POSV and POS accrue weight for their coisn, 
+		In order to better visualise the relative speed at which POSV and POS accrue weight for their coin,
 		the next graph shows the <i>ratio</i> of POSV to POS weights. The peak of 1.2 means that at
 		1 week, the coins which stake in the POSV wallet accrue weight 20% <i>faster</i> than their POS counterpart.
 	</p>
@@ -473,7 +475,8 @@
 
     <div class="info" title="More Info: Shuffling Coins for Optimal Age">
         <p>
-            TODO: Figure out how this actually works. This is just an estimate.
+            TODO: Figure out how this actually works. This stuff could very well be made up, I don't remember where I
+            heard it.
         </p>
 
         <p>
@@ -495,14 +498,70 @@
         staking occurs.
     </p>
 
+    <p>
+        TODO: Create the graph :P
+    </p>
+
     <h2>
         Putting it all together
     </h2>
 
     <p>
-        TODO: Write a simulator that will simulate a year of staking with a given initial coin value and given
-        constant network weight.
+        To see how all of this fits together we've created a staking simulator. What we'll do here is define the total
+        network weight and assume it remains constant for the entire simulated year. For simplicity, we'll also assume
+        that all of your coins are in one group and that they will stay in that group the entire year. Your coins will
+        start with a coinage of zero.
     </p>
+    <p>
+        We will simulate every minute of the year by calculating your current weighted age and generating a random
+        number to determine if you succesfully stake that minute. If you do, you'll receive interest and your coinage
+        will be reset. If you don't, we'll increase your coinage by one minute and then try to stake again.
+    </p>
+
+    <div class="header">
+        <h2>
+            <img src="http://i.imgur.com/8z5IK9G.png" alt="Reddcoin Icon" class="reddcoinIcon" />
+            Simulate A Year of Staking
+        </h2>
+    </div>
+
+    <div class="mainContainer" id="simulatorContainer">
+        <div id="simulatorMessage" class="errorMessage">
+            All fields should contain numbers.
+        </div>
+        <div id="simulatorForm">
+
+            <label> Your Total Coins </label>
+            <input type="text" id="totalCoins" value="1,000,000" />
+
+            <label> Constant Network Weight </label>
+            <input type="text" id="constantNetworkWeight" value="19,000,000,000" />
+
+            <br>
+            <button id="simulateStaking">Simulate Staking</button>
+
+            <div class="pad-top">
+                Days Elapsed: <span id="daysElapsed"></span> Days
+                <br>
+                Current RDD: <span id="currentRdd"></span> RDD
+                <br>
+                Total Times Staked: <span id="timesStaked"></span> time(s)
+                <br>
+                RDD Gained: <span id="rddGained"></span> RDD
+                <br>
+                Effective Interest: <span id="effectiveInterest"></span>%
+            </div>
+        </div>
+
+        <div id="simulatorResults">
+            <label>A years worth of staking:</label>
+
+            <div id="stakingOutput">
+
+            </div>
+        </div>
+        <br class="clear">
+    </div>
 
 </div>
 

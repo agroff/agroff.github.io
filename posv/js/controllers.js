@@ -52,4 +52,6 @@ $(function () {
     RDD.Expandables.initialize();
     RDD.RewardTime.bind();
 
+    RDD.PosvSimulator.bind();
+
 });

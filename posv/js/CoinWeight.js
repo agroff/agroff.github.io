@@ -5,26 +5,7 @@
         pub = {};
 
     pri.calculateWeight = function(hoursOld){
-        var stakeMinAgeHours = 8,
-            days = ( (hoursOld - stakeMinAgeHours) / 24),
-            weight = 0,
-            stakeMaxAge = 200000000;
-
-        if (days <= 7)
-        {
-            weight = -0.00408163 * Math.pow(days, 3) + 0.05714286 * Math.pow(days, 2) + days;
-        }
-        else
-        {
-            weight = 8.4 * Math.log(days) - 7.94564525;
-        }
-
-        //weight = (weight * 24 * 60 * 60)
-        weight = Math.min(weight, stakeMaxAge);
-        //weight = Math.round(weight);
-        //weight = weight.toFixed(2);
-
-        return Math.max(0, weight);
+        return exports.helpers.posvHoursToWeightedDays(hoursOld);
     };
     
     pri.calculatePOSWeight = function(hoursOld){

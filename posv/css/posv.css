@@ -181,6 +181,8 @@ button:hover{
 #initialRdd{
     width:40%;
 }
+
+#simulatorForm input,
 #timeForm input{
     display: block;
     margin-bottom: 10px;
@@ -188,7 +190,18 @@ button:hover{
 #expectedRewardContainer{
     padding-bottom:20px;
 }
+#stakingOutput{
+    max-height: 500px;
+    overflow: auto;
+    font-size:14px;
+}
+#stakingOutput p{
+    font-size:11px;
+    line-height: 12px;
+    margin:3px;
+}
 div.notification,
+.errorMessage,
 #timeErrorMessage,
 #errorMessage {
     margin-top:10px;
@@ -204,6 +217,8 @@ div.notification,
     margin-top:0px;
     margin-bottom:10px;
 }
+#simulatorForm,
+#simulatorResults,
 #timeForm,
 #timeResults{
     width:48%;
