@@ -9,7 +9,10 @@
     };
     
     pri.calculatePOSWeight = function(hoursOld){
-        var stakeMinAgeHours = 8,
+        //I think it makes more sense if this variable is zero for the pos comparison.
+        //different pos implementations will have a different value for this, but for the graph its nice if pos
+        // corresponds exactly with calendar age.
+        var stakeMinAgeHours = 0,
             days = ( (hoursOld - stakeMinAgeHours) / 24),
             weight = days;
 

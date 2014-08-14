@@ -9,6 +9,7 @@
             minutesElapsed : -1,
             staking : {
                 count : 0,
+                totalAgeConsumed : 0,
                 networkWeight : 0,
                 initialRdd : 0,
                 currentRdd : 0,
@@ -21,12 +22,26 @@
     pri.updateSidebar = function(){
         var d = pri.staking,
             rddGained = d.currentRdd - d.initialRdd,
-            effectiveInterest = (rddGained / pri.staking.initialRdd) *100;
+            effectiveInterest = (rddGained / pri.staking.initialRdd) *100,
+            daysElapsed = Math.floor(pri.minutesElapsed / 60 / 24),
+            averageStakeAge = d.totalAgeConsumed / d.count;
+
+        if(isNaN(effectiveInterest)){
+            effectiveInterest = 0;
+        }
+        if(isNaN(averageStakeAge)){
+            averageStakeAge = 0;
+        }
+        if(daysElapsed < 0){
+            daysElapsed = 0;
+        }
+
         $("#currentRdd").html(d.currentRdd);
         $("#timesStaked").html(d.count);
         $("#rddGained").html(rddGained);
         $("#effectiveInterest").html(effectiveInterest.toFixed(2));
-        $("#daysElapsed").html(Math.floor(pri.minutesElapsed / 60 / 24));
+        $("#averageStakeAge").html(averageStakeAge.toFixed(2));
+        $("#daysElapsed").html(daysElapsed);
     }
 
     pri.outputState = function(){
@@ -56,7 +71,12 @@
             return false;
         }
 
+
+
         calendarAge = (d.currentAge / 60 / 24).toFixed(2);
+
+        pri.staking.totalAgeConsumed += (calendarAge * 1);
+
         weightedAge = exports.helpers.posvHoursToWeightedDays(d.currentAge / 60).toFixed(2);
         interestForYear = d.currentRdd * 0.05;
         interestGained = interestForYear / (365 / weightedAge);
@@ -104,7 +124,7 @@
 
             setTimeout(function(){
                 pri.simulateMinute();
-            }, 100);
+            }, 15);
             return true;
         }
 
@@ -122,6 +142,7 @@
         pri.staking.currentRdd = totalRdd;
         pri.staking.currentAge = -1;
         pri.staking.currentWeight = 0;
+        pri.staking.totalAgeConsumed = 0;
         pri.staking.count = 0;
 
         pri.minutesElapsed = -1;
