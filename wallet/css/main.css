@@ -1,0 +1,136 @@
+body
+{
+    background-image : url("../img/bg.png");
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+label, li, ol,
+p, div, div.row, div.panel
+{
+    font-family : "Monteserat", "Arial", serif;
+    color       : #fff;
+}
+
+p, div, div.row, div.panel
+{
+    font-family : "Open Sans", sans-sefif, serif;
+    color       : #ddd;
+}
+
+body.panel,
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6,
+.panel label, .panel li, .panel ol,
+.panel p, .panel div, .panel div.row, div.panel
+{
+    color : #e8e8e8;
+}
+
+.bigHeader
+{
+    font-size      : 60px;
+    font-weight    : 300;
+    text-align     : center;
+    line-height    : 52px;
+    margin-bottom  : 15px;
+    letter-spacing : 1px;
+}
+
+div.row
+{
+    background-color : #383838;
+}
+
+div.panel
+{
+    border-color     : #6b6b6b;
+    background-color : #555;
+}
+
+a
+{
+    color              : #1fbba6;
+    text-decoration    : none;
+    -webkit-transition : color, background-color, border-color 0.3s ease-out;
+    -moz-transition    : color, background-color, border-color 0.3s ease-out;
+    -o-transition      : color, background-color, border-color 0.3s ease-out;
+    transition         : color, background-color, border-color 0.3s ease-out;
+}
+
+a:hover
+{
+    color           : #fff;
+    text-decoration : none;
+}
+
+p.dark
+{
+    color : #ddd;
+}
+
+.contain-to-grid,
+.top-bar
+{
+    background : #000000;
+    height     : 60px;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button)
+{
+    padding     : 0 15px;
+    line-height : 60px;
+    background  : #000000;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover
+{
+    background : #1D1D1D;
+}
+
+.top-bar-section ul li:hover:not(.has-form) > a
+{
+    background : #1D1D1D;
+}
+
+.top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button)
+{
+    color            : white;
+    background-color : #555555;
+    background       : #111111;
+}
+
+.top-bar-section .has-dropdown > a:after
+{
+    top : 28.5px;
+}
+
+#spacer
+{
+    height : 500px;
+}
+
+.round{
+    padding: 20px;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+}
+.fa.large{
+    font-size: 50px;
+}
+.space-top{
+    margin-top:10px;
+}
+.bright{
+    color : #1fbba6;
+}
+div.bright,
+.button
+{
+    background-color : #1fbba6;
+}
+
+.button:hover
+{
+    background-color : #666;
+}

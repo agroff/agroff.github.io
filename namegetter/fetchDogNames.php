@@ -12,6 +12,35 @@ class NameFetcher extends \Groff\Command\Command
      */
     function main()
     {
+
+        $url = "http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=169";
+
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $resp = curl_exec($curl);
+
+        curl_close($curl);
+
+
+
+        $array = json_decode($resp,true);
+        $trades = $array["return"]["markets"]["RDD"]["recenttrades"];
+
+        print_r($array["return"]["markets"]["RDD"]);
+
+        foreach($trades as $order)
+        {
+            echo $order["price"]."\n";
+            echo $order["quantity"]."\n";
+            echo $order["total"]."\n";
+        }
+        return;
+
+
+
         $gender = "female";
         $alphabet = array(
             "A", "B", "C", "D", "E", "F", "G", "H", "I",
