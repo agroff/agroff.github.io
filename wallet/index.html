@@ -39,15 +39,28 @@
         <section class="top-bar-section">
             <!-- Right Nav Section -->
             <ul class="right">
-                <li class="has-dropdown">
-                    <a href="#">Choose a Wallet</a>
-                    <ul class="dropdown">
-                        <li><a href="#windows">Windows</a></li>
-                        <li><a href="#osx">OSX</a></li>
-                        <li><a href="#linux">Linux</a></li>
-                        <li><a href="#ios">iOS</a></li>
-                        <li><a href="#android">Android</a></li>
-                    </ul>
+                <li>
+                    <a href="#features">
+                        Features
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#faq">
+                        FAQ
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#install">
+                        Install
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#help">
+                        Help
+                    </a>
                 </li>
             </ul>
         </section>
@@ -55,87 +68,318 @@
 </div>
 
 
-
 <div class="row">
     <div class="large-12 columns">
-        <div class="panel">
+        <div class="text-center" id="selectedOsContainer">
+
+
+            <div class="row">
+                <div class="large-8 columns ">
+                    <img src="img/electrum_banner.png">
+                </div>
+                <div class="large-4 columns">
+
+
+                    <!----------------------------------------------
+                      -                  OSX                       -
+                      ---------------------------------------------->
+                    <div class="singleOs osx text-center">
+
+                        <a href="" class="large radius button">
+                            <i class="fa fa-apple large bright left"></i>
+
+                            <div class="buttonText">
+                                Electrum
+                                <br>
+                                for OSX
+                            </div>
+                        </a>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="large-8 columns">
+                </div>
+                <div class="large-4 columns">
+                    <span class="light">
+                        Looking for something else?
+                        <br>
+                        <a href="#walletList">
+                            View All Wallets
+                        </a>
+                    </span>
+                </div>
+            </div>
+
 
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="large-8 medium-8 columns">
+<div class="row lighter">
+<div class="large-8 medium-8 columns walletList">
 
-        <h5 id="windows">Windows</h5>
+    <blockquote>
+        Reddcoin Electrum is a fast, secure, and user friendly Reddcoin wallet. Electrum doesn't download the
+        blockchain, so the days of waiting for your wallet to sync are gone. Just open your wallet and start using
+        it.
+        Backups are simplified by a natural language passphrase which can be written down or memorized. With
+        Electrum, a single backup will keep your coins safe forever.
+    </blockquote>
 
-        <div class="row">
-            <div class="small-6 columns">
-            </div>
-            <div class="small-6 columns">
-            </div>
-        </div>
+    <h3 class="walletListHeader" id="features">
+        Electrum Features
+    </h3>
 
-        <h5 id="osx">OSX</h5>
-
-        <div class="row">
-            <div class="small-6 columns">
-            </div>
-            <div class="small-6 columns">
-            </div>
-        </div>
+    <hr>
 
 
-        <h5 id="linux">Linux</h5>
+    <ul>
+        <li>
+            Fast: Your wallet doesn't download the blockchain, so it's ready to use instantly.
+        </li>
+        <li>
+            Forgiving: Your wallet can be easily recovered from your natural language passphrase.
+        </li>
+        <li>
+            Safe: Your private keys don't leave your computer and server data is
+            verified using <a href="https://en.bitcoin.it/wiki/Thin_Client_Security#Header-Only_Clients"
+                              target="_blank">SPV</a>.
+        </li>
+        <li>
+            Auto Sync: Electrum wallets on all devices stay in sync automatically.
+        </li>
+        <li>
+            Cold Storage: You can have secure offline wallets and still safely spend from an online computer.
+        </li>
+        <li>
+            Compatible: Your private keys can be used with other Reddcoin wallets.
+        </li>
+    </ul>
+
+    <h3 class="walletListHeader" id="faq">
+        Electrum FAQ
+    </h3>
+
+    <hr>
+
+    <dl>
+
+        <dt id="seed">
+            What is the Seed?
+        </dt>
+        <dd>
+            Reddcoin Electrum uses a 128-bit random seed to generate your private keys. The seed can be represented
+            as a 12-word pass-phrase which is easy to write down or remember. Regular backups are no longer necessary
+            because all of your addresses can be recovered from a single pass-phrase.
+
+        </dd>
+        <dt id="gap-limit">
+            What is the gap limit?
+        </dt>
+        <dd>
+            The gap limit is the maximum number of consecutive unused addresses in your deterministic sequence of
+            addresses. Reddcoin Electrum uses a gap limit to stop looking for addresses. This is set to 5 by default,
+            so the client generates new addresses until 5 unused addresses are found.
+        </dd>
+
+        <dt id="freeze-address">
+            What does it mean to "freeze" an address?
+        </dt>
+        <dd>
+            When you freeze an address, the funds in that address will not be used for sending Reddcoin.
+            You cannot send Reddcoin if you don't have enough funds in non-frozen addresses.
+        </dd>
+
+        <dt id="old-address">
+            What should I do with my old Reddcoin addresses when switching to Reddcoin Electrum?
+        </dt>
+        <dd>
+            The best way to switch to Electrum is to send all your Reddcoin to one of the your Electrum addresses.
+            This way you'll have all your Reddcoin secured with your pass-phrase and will only need to keep your initial
+            passphrase backup. Keep in mind that sending all your Reddcoins will reset their coin age and be a minor
+            setback for staking.
+        </dd>
+
+        <dt id="wallet-file">
+            Where is my wallet file located?
+        </dt>
+        <dd>
+            A default wallet file called <kbd>default_wallet</kbd> is created under the <kbd>/wallets</kbd> directory
+            when you first run Reddcoin Electrum. On Windows, this folder is located in
+            <kbd>\Users\YourUserName\AppData\Roaming\Local\Electrum-reddcoin</kbd>.
+            On all other operating systems, it is located in <kbd>~/.electrum-reddcoin</kbd>.
+        </dd>
+
+        <dt id="mobile">Can I use Reddcoin Electrum on my phone?</dt>
+        <dd>
+            Reddcoin Electrum for mobile devices is not currently available, but is under development and will be
+            ready soon.
+        </dd>
+
+    </dl>
+
+    <h3 class="walletListHeader" id="install">
+        Installing Electrum
+    </h3>
+
+    <hr>
+
+    <p>
+
+        OSX and Windows users can simply download and run their binaries. Linux users can install Electrum with the
+        following commands:
+    </p>
+
+    <code>
+sudo apt-get install python-qt4 python-pip python-dev
+sudo apt-get install python-slowaes  # on Ubuntu 13.10 and higher
+sudo pip install http://reddwallet.org/download/Reddcoin-Electrum.tar.gz
+reddcoin-electrum
+    </code>
 
 
-        <div class="row">
-            <div class="small-6 columns">
-            </div>
-            <div class="small-6 columns">
-            </div>
-        </div>
+    <h3 class="walletListHeader" id="help">
+        Electrum Help
+    </h3>
 
-        <h5 id="ios">iOS</h5>
+    <hr>
 
-        <div class="row">
-            <div class="small-12 columns">
-                Coming Soon...
-            </div>
-        </div>
+    <p>
+        For technical support, you can ask questions on <a href="https://reddit.com/r/Reddcoin">Reddit</a> or in IRC
+        Freenode channel <kbd>#reddcoin</kbd>
+    </p>
 
-
-        <h5 id="android">Android</h5>
-
-        <div class="row">
-            <div class="small-12 columns">
-                <p>
-                    Coming Soon...
-                </p>
-
-            </div>
-        </div>
-
-        <div id="spacer">
-            &nbsp;
-        </div>
-
+    <div id="spacer">
+        &nbsp;
     </div>
 
-    <div class="large-4 medium-4 columns">
+</div>
 
-        <div class="panel text-center">
+<div class="large-4 medium-4 columns">
 
+    <div class="panel text-center githubPanel">
+
+        <div class="round bright">
+            <i class="fa fa-github-alt large"></i>
+        </div>
+
+        <p class="space-top">
+            Electrum and QT Wallet Source Available at github.
+        </p>
+        <a href="https://github.com/reddcoin-project/reddcoin-electrum" class="small radius button">Electrum
+            Source</a>
+        <a href="https://github.com/reddcoin-project/reddcoin" class="small secondary radius button">QT Source</a>
+    </div>
+
+
+    <h3 class="walletListHeader" id="walletList">
+        All Wallets
+    </h3>
+
+    <hr>
+
+    <div class="row space-top-big">
+        <div class="small-3 columns">
             <div class="round bright">
-                <i class="fa fa-github-alt large"></i>
+                <i class="fa fa-windows medium"></i>
             </div>
-
-            <p class="space-top">
-                Check out github to view the source and compile the wallet yourself.
-            </p>
-            <a href="http://foundation.zurb.com/docs/" class="small button">Get The Source</a>
+        </div>
+        <div class="small-9 columns">
+            <a href="#" class="">
+                Windows Electrum Wallet
+            </a>
+            <br>
+            <a href="#" class="">
+                Windows QT Wallet
+            </a>
+            <br>
+            <a href="#" class="">
+                Windows Social Wallet
+            </a>
         </div>
     </div>
+
+    <div class="row space-top-big">
+        <div class="small-3 columns">
+            <div class="round bright">
+                <i class="fa fa-apple medium"></i>
+            </div>
+        </div>
+        <div class="small-9 columns">
+            <a href="#" class="">
+                OSX Electrum Wallet
+            </a>
+            <br>
+            <a href="#" class="">
+                OSX QT Wallet
+            </a>
+            <br>
+            <a href="#" class="">
+                OSX Social Wallet
+            </a>
+        </div>
+    </div>
+
+    <div class="row space-top-big">
+        <div class="small-3 columns">
+            <div class="round bright">
+                <i class="fa fa-linux medium"></i>
+            </div>
+        </div>
+        <div class="small-9 columns">
+            <a href="#" class="">
+                Linux Electrum Wallet
+            </a>
+            <br>
+            <a href="#" class="">
+                Linux QT Wallet
+            </a>
+            <br>
+            <a href="#" class="">
+                Linux Social Wallet
+            </a>
+        </div>
+    </div>
+
+    <div class="row space-top-big">
+        <div class="small-3 columns">
+            <div class="round bright">
+                <i class="fa fa-android medium"></i>
+            </div>
+        </div>
+        <div class="small-9 columns">
+            <a class="space-top disabled">
+                Android Electrum
+                <br>
+                Coming Soon...
+            </a>
+        </div>
+    </div>
+
+    <div class="row space-top-big">
+        <div class="small-3 columns">
+            <div class="round bright">
+                <i class="fa fa-apple medium"></i>
+            </div>
+        </div>
+        <div class="small-9 columns">
+            <a class="space-top disabled">
+                iOS Electrum
+                <br>
+                Coming Soon...
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
 </div>
 
 <script src="js/vendor/jquery.js"></script>

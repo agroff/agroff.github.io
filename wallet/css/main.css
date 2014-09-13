@@ -1,6 +1,6 @@
 body
 {
-    background-image : url("../img/bg.png");
+    background: #0C0B0B;
 }
 
 body,
@@ -38,7 +38,7 @@ body.panel,
 
 div.row
 {
-    background-color : #383838;
+    background-color : #202020;
 }
 
 div.panel
@@ -84,7 +84,7 @@ p.dark
 
 .top-bar-section li:not(.has-form) a:not(.button):hover
 {
-    background : #1D1D1D;
+    background : #0A0A0A;
 }
 
 .top-bar-section ul li:hover:not(.has-form) > a
@@ -101,7 +101,7 @@ p.dark
 
 .top-bar-section .has-dropdown > a:after
 {
-    top : 28.5px;
+    top : 28px;
 }
 
 #spacer
@@ -109,21 +109,71 @@ p.dark
     height : 500px;
 }
 
-.round{
-    padding: 20px;
-    border-radius: 50%;
-    margin: auto;
-    display: inline-block;
+.round
+{
+    padding       : 14px 16px;
+    border-radius : 50%;
+    margin        : auto;
+    display       : inline-block;
 }
-.fa.large{
-    font-size: 50px;
+
+.fa.medium
+{
+    font-size : 40px;
 }
-.space-top{
-    margin-top:10px;
+.fa.large
+{
+    font-size : 50px;
 }
-.bright{
+
+.fa.huge
+{
+    font-size : 100px;
+}
+
+a.disabled:hover,
+a.disabled{
+    color:#CCC;
+    cursor : text;
+}
+
+.space-top-big a.disabled{
+    margin-top:15px;
+    display: block;
+}
+
+.githubPanel .button{
+    width:60%;
+}
+
+.row.space-top,
+.space-top
+{
+    margin-top : 10px;
+}
+.row.space-top-big,
+.space-top-big
+{
+    margin-top : 20px;
+}
+
+.space-top-big .round{
+    margin-top:5px;
+}
+
+.bright
+{
     color : #1fbba6;
 }
+
+.walletList div.row{
+    margin-top:10px;
+}
+.walletList .radius.button{
+    width:100%;
+    line-height:33px;
+}
+
 div.bright,
 .button
 {
@@ -133,4 +183,103 @@ div.bright,
 .button:hover
 {
     background-color : #666;
+}
+
+.row.lighter div.row,
+.row.lighter
+{
+    background-color : #4E4E4E;
+    background-color : #383838;
+}
+
+.row.lighter
+{
+    padding-top : 25px;
+    border-top  : 1px solid #181818;
+}
+.row.lighter ul,
+.row.lighter li,
+.row.lighter p{
+    color:#f1f1f1;
+}
+
+code{
+    display:block;
+    white-space: pre;
+    padding:5px;
+    font-size: 90%;
+    background-color: #444;
+    border:1px solid #222;
+    color: #007095;
+    border-radius: 8px;
+}
+
+kbd{
+    background-color: #444;
+    border:1px solid #222;
+    color: #007095;
+}
+
+.singleOs .button img{
+    width:40px;
+}
+.singleOs .button{
+    width:100%
+}
+.singleOs .button .buttonText{
+    color: #FFF;
+    /* padding-top: 10px; */
+    text-align: left;
+    margin-left: 60px;
+}
+
+.walletButtons .button
+{
+    width      : 100%;
+    text-align : center;
+}
+
+.walletButtons img
+{
+    display      : inline;
+    width        : 50px;
+    margin-right : 20px;
+}
+
+.walletListHeader
+{
+    margin-bottom : 0px;
+}
+
+hr
+{
+    margin-top : 0px;
+    padding    : 0px;
+}
+
+.fa
+{
+    color : #FFF;
+}
+
+.top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
+    border-right: solid 1px #0F0F0F;
+    height: 60px;
+}
+
+blockquote{
+    color: #F1F1F1;
+    border-left: 1px solid #444;
+    font-style: italic;
+}
+
+#selectedOsContainer
+{
+    width  : 90%;
+    margin : 40px auto;
+}
+
+.linux
+{
+    display : none;
 }
