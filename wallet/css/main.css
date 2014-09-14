@@ -3,6 +3,7 @@ body
     background : #0C0B0B;
     background : #585858;
     background : #DBDBDB;
+    font-size: 0.9rem;
 }
 
 body,
@@ -12,12 +13,30 @@ p, div, div.row, div.panel
 {
     font-family : "Monteserat", "Arial", serif;
     color       : #4E4E4E;
+
+}
+
+.linux-icon.round.bright,
+.linux-icon{
+    margin-top:16px;
+}
+
+.sidebar{
+    line-height: 1.68rem;
+}
+
+body, dd, dt,
+label, li, ol,
+p, div, div.row, div.panel
+{
+    font-size: 0.9rem;
 }
 
 p, div, div.row, div.panel
 {
     font-family : "Open Sans", sans-sefif, serif;
     color       : #4E4E4E;
+    font-size: 0.9rem;
 }
 
 .dark,
