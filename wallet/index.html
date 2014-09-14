@@ -107,7 +107,8 @@
         SPV stands for <i>Simplified Payment Verification</i>, which was first introduced in section 8 of the
         <a href="http://bitcoin.org/bitcoin.pdf">original Bitcoin whitepaper</a>. Reddcoin SPV wallets use the
         <a href="https://electrum.org/">Electrum protocol</a> and only need to keep track of block headers and
-        addresses with non-zero outstanding balances. Reddcoin Electrum wallets come in <i>three flavours</i>:
+        addresses with non-zero outstanding balances. Reddcoin Electrum wallets are currently under active
+        development and will come in <i>three flavours</i>:
     </p>
 
     <ul>
@@ -125,18 +126,17 @@
     <dl>
         <dt>Instant</dt>
         <dd>
-            Your wallet doesn't download the fully blockchain but communicates with a network of
+            Your wallet doesn't download the entire blockchain but communicates with a network of
             specialised servers. It's usually ready for use within seconds.
         </dd>
         <dt>Forgiving</dt>
         <dd>
-            Your wallet can be fully recovered from one secret <i>seed</i>. There is no more need for
+            Your wallet can be fully recovered anywhere from one secret <i>seed</i>. There is no more need for
             backing up wallet files like <i>wallet.dat</i>
         </dd>
         <dt>Safe</dt>
         <dd>
-            Your seed and private keys are encrypted and stored on your device only
-            and are never sent anywhere else.
+            Your seed and private keys are encrypted and stored locally on your device only.
         </dd>
         <dt>Low trust</dt>
         <dd>
@@ -144,8 +144,7 @@
         </dd>
         <dt>No downtime</dt>
         <dd>
-            Your client is not tied to a particular server and can automatically switch to the most
-            reliable ones.
+            Your client can automatically switch to the most reliable servers.
         </dd>
         <dt>Ubiquitous</dt>
         <dd>
@@ -334,7 +333,10 @@
             Reddcoin Core
         </a>
         <a href="https://github.com/reddcoin-project/reddcoin-electrum" class="small secondary radius button">
-            Reddcoin Electrum
+            Electrum client
+        </a>
+        <a href="https://github.com/reddcoin-project/reddcoin-electrum-server" class="small secondary radius button">
+            Electrum server
         </a>
     </div>
 
