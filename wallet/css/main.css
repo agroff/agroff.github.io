@@ -16,6 +16,10 @@ p, div, div.row, div.panel
 
 }
 
+h4{
+    color: #1fbba6;
+}
+
 .linux-icon.round.bright,
 .linux-icon{
     margin-top:16px;
@@ -140,7 +144,7 @@ p.dark
 
 #spacer
 {
-    height : 500px;
+    height : 300px;
 }
 
 .round
@@ -174,7 +178,7 @@ p.dark
 
 .githubPanel .button
 {
-    width : 60%;
+    width : 70%;
 }
 
 .row.space-top,
@@ -266,6 +270,9 @@ kbd
     width : 40px;
 }
 
+.singleOs .button div{
+    font-size: 1.1rem;
+}
 .singleOs .button
 {
     width : 100%
@@ -332,7 +339,26 @@ blockquote
     display : none;
 }
 
-.linux
-{
-    /*display : none;*/
+div.copyright{
+    padding:20px;
+}
+
+.footer div,
+.footer{
+    font-size: 0.7rem;
+    color: #eeeeee;
+}
+
+.social-media a i.fa,
+.social-media a{
+    color:#444;
+    padding: 0px 4px;
+    font-size: 1.2em;
+}
+
+
+#footer{
+    text-align: center;
+    padding:70px 0px;
+    background-color: #000;
 }
