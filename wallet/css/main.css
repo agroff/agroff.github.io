@@ -1,6 +1,8 @@
 body
 {
-    background: #0C0B0B;
+    background : #0C0B0B;
+    background : #585858;
+    background : #DBDBDB;
 }
 
 body,
@@ -9,13 +11,19 @@ label, li, ol,
 p, div, div.row, div.panel
 {
     font-family : "Monteserat", "Arial", serif;
-    color       : #fff;
+    color       : #4E4E4E;
 }
 
 p, div, div.row, div.panel
 {
     font-family : "Open Sans", sans-sefif, serif;
-    color       : #ddd;
+    color       : #4E4E4E;
+}
+
+.dark,
+.fa.dark
+{
+    color : #4E4E4E;
 }
 
 body.panel,
@@ -38,13 +46,13 @@ body.panel,
 
 div.row
 {
-    background-color : #202020;
+    background-color : #585858;
 }
 
 div.panel
 {
-    border-color     : #6b6b6b;
-    background-color : #555;
+    border-color     : #CFCFCF;
+    background-color : #FFF;
 }
 
 a
@@ -59,8 +67,15 @@ a
 
 a:hover
 {
-    color           : #fff;
+    color           : #333;
     text-decoration : none;
+}
+
+a.disabled:hover,
+a.disabled
+{
+    color  : #777;
+    cursor : text;
 }
 
 p.dark
@@ -121,6 +136,7 @@ p.dark
 {
     font-size : 40px;
 }
+
 .fa.large
 {
     font-size : 50px;
@@ -131,19 +147,15 @@ p.dark
     font-size : 100px;
 }
 
-a.disabled:hover,
-a.disabled{
-    color:#CCC;
-    cursor : text;
+.space-top-big a.disabled
+{
+    margin-top : 15px;
+    display    : block;
 }
 
-.space-top-big a.disabled{
-    margin-top:15px;
-    display: block;
-}
-
-.githubPanel .button{
-    width:60%;
+.githubPanel .button
+{
+    width : 60%;
 }
 
 .row.space-top,
@@ -151,14 +163,16 @@ a.disabled{
 {
     margin-top : 10px;
 }
+
 .row.space-top-big,
 .space-top-big
 {
     margin-top : 20px;
 }
 
-.space-top-big .round{
-    margin-top:5px;
+.space-top-big .round
+{
+    margin-top : 5px;
 }
 
 .bright
@@ -166,12 +180,15 @@ a.disabled{
     color : #1fbba6;
 }
 
-.walletList div.row{
-    margin-top:10px;
+.walletList div.row
+{
+    margin-top : 10px;
 }
-.walletList .radius.button{
-    width:100%;
-    line-height:33px;
+
+.walletList .radius.button
+{
+    width       : 100%;
+    line-height : 33px;
 }
 
 div.bright,
@@ -190,47 +207,56 @@ div.bright,
 {
     background-color : #4E4E4E;
     background-color : #383838;
+    background-color : #F5F5F5;
 }
 
 .row.lighter
 {
     padding-top : 25px;
-    border-top  : 1px solid #181818;
+    border      : 1px solid #B3B3B3;
+    border-top  : none;
 }
+
 .row.lighter ul,
 .row.lighter li,
-.row.lighter p{
-    color:#f1f1f1;
+.row.lighter p
+{
+    color : #484848;
 }
 
-code{
-    display:block;
-    white-space: pre;
-    padding:5px;
-    font-size: 90%;
-    background-color: #444;
-    border:1px solid #222;
-    color: #007095;
-    border-radius: 8px;
+code
+{
+    display       : block;
+    white-space   : pre;
+    padding       : 5px;
+    border-radius : 8px;
 }
 
-kbd{
-    background-color: #444;
-    border:1px solid #222;
-    color: #007095;
+code,
+kbd
+{
+    font-size        : 90%;
+    background-color : #757575;
+    border           : none;
+    color            : #FFFFFF;
 }
 
-.singleOs .button img{
-    width:40px;
+.singleOs .button img
+{
+    width : 40px;
 }
-.singleOs .button{
-    width:100%
+
+.singleOs .button
+{
+    width : 100%
 }
-.singleOs .button .buttonText{
-    color: #FFF;
+
+.singleOs .button .buttonText
+{
+    color       : #FFF;
     /* padding-top: 10px; */
-    text-align: left;
-    margin-left: 60px;
+    text-align  : left;
+    margin-left : 60px;
 }
 
 .walletButtons .button
@@ -262,15 +288,17 @@ hr
     color : #FFF;
 }
 
-.top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
-    border-right: solid 1px #0F0F0F;
-    height: 60px;
+.top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"]
+{
+    border-right : solid 1px #0F0F0F;
+    height       : 60px;
 }
 
-blockquote{
-    color: #F1F1F1;
-    border-left: 1px solid #444;
-    font-style: italic;
+blockquote
+{
+    color       : #777;
+    border-left : 1px solid #e6e6e6;
+    font-style  : italic;
 }
 
 #selectedOsContainer
@@ -279,7 +307,12 @@ blockquote{
     margin : 40px auto;
 }
 
-.linux
+.singleOs
 {
     display : none;
+}
+
+.linux
+{
+    /*display : none;*/
 }
