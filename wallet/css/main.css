@@ -230,6 +230,7 @@ code
     white-space   : pre;
     padding       : 5px;
     border-radius : 8px;
+    overflow      : auto;
 }
 
 code,
