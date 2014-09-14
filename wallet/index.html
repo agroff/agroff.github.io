@@ -42,13 +42,13 @@
             <ul class="right">
                 <li>
                     <a href="#top">
-                        About
+                        Home
                     </a>
                 </li>
                 <li class="divider"></li>
                 <li>
                     <a href="#downloads">
-                        Downloads
+                        Download
                     </a>
                 </li>
                 <li class="divider"></li>
@@ -66,7 +66,7 @@
                 <li class="divider"></li>
                 <li>
                     <a href="#faq">
-                        FAQ
+                        FAQs
                     </a>
                 </li>
                 <li class="divider"></li>
@@ -83,178 +83,118 @@
 <div class="row lighter" id="top">
 <div class="large-8 medium-8 columns walletList">
 
-    <h3 class="walletListHeader">
-        QT, Social, and Electrum Wallets
-    </h3>
+    <h4 class="walletListHeader">
+        Reddcoin Full-chain and SPV Wallets
+    </h4>
 
     <hr>
 
     <p>
-        Reddcoin currently offers 3 different wallets. Knowing which one(s) are best for you can be confusing. Luckily,
-        we're here to help.
+        <a href="http://www.reddcoin.com">Reddcoin Project</a> officially provides two types of wallets:
+        <i>full-chain</i> and <i>SPV</i>.
     </p>
 
     <p>
-        QT is the original Reddcoin wallet. Its roots trace back to the original bitcoin wallet written by
-        Satoshi Nakamoto, and it is constantly being updated with the latest features from bitcoin.
+        The <a href="https://github.com/reddcoin-project/reddcoin"><i>Reddcoin Core full-chain wallet</i></a> is
+        a full-chain desktop wallet that traces its root
+        back to the official Bitcoin Core wallet and continues to incorporate the latest features from the
+        <a href="https://github.com/bitcoin/bitcoin">Bitcoin source code</a>. The wallet provides both command line
+        daemons and QT-based GUI for Windows, Linux and Mac OS X. The full-chain wallet keeps a local copy of
+        the entire <i>blockchain</i> whose size grows continuously.
     </p>
 
     <p>
-        The QT Wallet is recommended for tech savvy users or users who require the highest levels of security, stability,
-        and features which help understand how Reddcoin works.
+        The <a href="http://www.reddcoin.com/news/"><i>Reddcoin social wallet</i></a> is another full-chain desktop
+        wallet that adopts a fresh new design for user interface and integrates various social features such as
+        real time price conversion, Reddit feeds, Twitter feeds and an IRC client.
     </p>
 
     <p>
-        The Reddcoin Social Wallet is a new twist on the QT wallet. The Social Wallet uses the same code under the hood
-        (it interfaces with the same daemon used by the QT wallet), but it includes a fresh new user experience including
-        real time price conversion, twitter feed integration, and an embedded IRC Client.
+        SPV stands for <i>Simplified Payment Verification</i>, which was first introduced in section 8 of the
+        <a href="http://bitcoin.org/bitcoin.pdf">original Bitcoin whitepaper</a>. Reddcoin SPV wallets use the
+        <a href="https://electrum.org/">Electrum protocol</a> and only need to keep track of block headers and
+        addresses with non-zero outstanding balances. Reddcoin Electrum wallets come in <i>three flavours</i>:
     </p>
 
-    <p>
-        The Social Wallet is recommended for users who aren't interested in the inner workings of Reddcoin, but just
-        want a beautiful way to save and spend their Reddcoin.
-    </p>
+    <ul>
+        <li>The <i>Reddcoin Electrum desktop wallets</i> for Windows, Linux and Mac OS X.</li>
+        <li>The <i>Reddcoin Electrum mobile wallets</i> for iOS and Android devices.</li>
+        <li>The <i>Reddcoin Electrum browser wallets</i> for Internet browsers such as Chrome, Safari
+            and Firefox.</li>
+    </ul>
 
-
-    <p>
-        Reddcoin Electrum is a fast, secure, and user friendly Reddcoin wallet. Electrum doesn't download the
-        blockchain, so there's no more need to wait for your wallet to sync.  Just open your wallet and start using
-        it.
-    </p>
-
-    <p>
-        Electrum backups are simplified by a natural language passphrase which can be written down or memorized. With
-        Electrum, a single backup will keep your coins safe forever.
-    </p>
-
-    <p>
-        Reddcoin Electrum is recommended for users who don't want the hassle of downloading the block chain, waiting for
-        their wallet to sync, or making constant backups. It is especially good for user's with lower capacity computers
-        as it uses less resources than traditional full node wallets.
-    </p>
-
-    <p>
-        Electrum is able to do all of this because it's a completely different class of wallet, called an SPV Wallet.
-    </p>
-
-
-    <h3 class="walletListHeader" id="spv-full-node">
-        SPV vs Full Node
-    </h3>
+    <h4 class="walletListHeader" id="features">
+        Reddcoin Electrum Features
+    </h4>
 
     <hr>
-
-    <p>
-        Until the release of Reddcoin Electrum, full node wallets the only ones available. A full node wallet downloads
-        the enter blockchain (the public ledger of all transactions that have ever occurred) and uses that ledger to
-        ensure transactions are valid. Since a full node knows about every transaction that has ever been spent, it can
-        quickly reject transactions which attempt to spend coins they don't own any more.
-    </p>
-
-    <p>
-        SPV, or Simplified Payment Verification, can verify transactions without downloading the entire blockchain. SPV
-        works by downloading only block headers (the part of a block which doesn't contain any transactions) and figuring
-        out what blocks relevant transaction occurred in. Once an SPV wallet knows where in the blockchain a transaction
-        occured, they can verify the transaction by seeing that more valid blocks come after the block that includes the
-        transaction. Instead of independently verifying the transactions, SPV trusts that other full nodes in the network
-        have verified it once it is deep enough in the blockchain (AKA, it has enough confirmations).
-    </p>
-
-    <p>
-        While full nodes also rely on confirmations, they do it with a different purpose. A full node verifies the
-        transaction independently and then uses confirmations to determine the likelihood of a competing fork erasing
-        the subchain which contains the transaction. SPV uses the confirmation themselves to verify that the transaction
-        was valid.
-    </p>
-
-    <h3 class="walletListHeader" id="features">
-        Electrum Features
-    </h3>
-
-    <hr>
-
 
     <ul>
         <li>
-            Fast: Your wallet doesn't download the blockchain, so it's ready to use instantly.
+            <i>Instant</i>: Your wallet doesn't download the fully blockchain but communicates with a network of
+            specialised servers. It's usually ready for use within seconds.
         </li>
         <li>
-            Forgiving: Your wallet can be easily recovered from your natural language passphrase.
+            <i>Forgiving</i>: Your wallet can be fully recovered from one secret <i>seed</i>. There is no more need for
+            backing up wallet files like <i>wallet.dat</i>
         </li>
         <li>
-            Safe: Your private keys don't leave your computer and server data is
-            verified using <a href="https://en.bitcoin.it/wiki/Thin_Client_Security#Header-Only_Clients"
-                              target="_blank">SPV</a>.
+            <i>Safe</i>: Your seed and private keys are encrypted and stored on your device only
+            and are never sent anywhere else.
         </li>
         <li>
-            Auto Sync: Electrum wallets on all devices stay in sync automatically.
+            <i>Low trust</i>: Data received from servers are verified using SPV. Servers are authenticated using SSL.
         </li>
         <li>
-            Cold Storage: You can have secure offline wallets and still safely spend from an online computer.
+            <i>No downtime</i>: Your client is not tied to a particular server and can automatically switch to the most
+            reliable ones.
         </li>
         <li>
-            Compatible: Your private keys can be used with other Reddcoin wallets.
+            <i>Ubiquitous</i>: You can use one seed for multiple wallets on multiple devices and
+            they will stay in sync automatically.
+        </li>
+        <li>
+            <i>Cold Storage</i>: You can keep all private keys in cold storage and still safely transact on an online computer.
+        </li>
+        <li>
+            <i>Compatible</i>: Your private keys can be exported to all the other Reddcoin wallets.
         </li>
     </ul>
 
-    <h3 class="walletListHeader" id="guides">
-        Electrum Guides
-    </h3>
+    <h4 class="walletListHeader" id="guides">
+        Reddcoin Electrum Guides
+    </h4>
 
     <hr>
 
-    <h5 id="install-windows">
-        <i class="fa fa-windows dark"></i>
-        Windows Installation
-    </h5>
+    <ul>
+        <li>
+            <a href="https://github.com/reddcoin-project/reddcoin-electrum/blob/master/README.md">
+                How to install a Reddcoin Electrum desktop wallet from source code
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/reddcoin-project/reddcoin-electrum-server/blob/master/HOWTO.md">
+                How to set up a Reddcoin Electrum server
+            </a>
+        </li>
+    </ul>
 
-    <p>
-        On Windows, simply download and run <a href="#">Reddcoin Electrum</a>
-    </p>
-
-    <h5 id="install-osx">
-        <i class="fa fa-apple dark"></i>
-        OSX Installation
-    </h5>
-
-    <p>
-        On OSX, simply download and run <a href="#">Reddcoin Electrum</a>
-    </p>
-
-    <h5 id="install-linux">
-        <i class="fa fa-linux dark"></i>
-        Linux Installation
-    </h5>
-
-    <p>
-
-        To install and run Reddcoin Electrum in Linux, open a shell and run the following commands:
-    </p>
-
-    <code>
-sudo apt-get install python-qt4 python-pip python-dev
-sudo apt-get install python-slowaes # on Ubuntu 13.10 and higher
-sudo pip install http://reddwallet.org/download/Reddcoin-Electrum.tar.gz
-reddcoin-electrum
-    </code>
-
-    <br>
-
-    <h3 class="walletListHeader" id="faq">
-        Electrum FAQ
-    </h3>
+    <h4 class="walletListHeader" id="faq">
+        Reddcoin Electrum FAQs
+    </h4>
 
     <hr>
 
     <dl>
 
         <dt id="seed">
-            What is the Seed?
+            What is a Seed?
         </dt>
         <dd>
-            Reddcoin Electrum uses a 128-bit random seed to generate your private keys. The seed can be represented
-            as a 12-word pass-phrase which is easy to write down or remember. Regular backups are no longer necessary
-            because all of your addresses can be recovered from a single pass-phrase.
+            Reddcoin Electrum wallets use a 128-bit random seed to generate your private keys. The seed can be represented
+            as a 12-word passphrase which is easy to write down or remember. Regular backups are no longer necessary
+            because all of your addresses and balances can be recovered anywhere from this single passphrase.
 
         </dd>
         <dt id="gap-limit">
@@ -262,68 +202,67 @@ reddcoin-electrum
         </dt>
         <dd>
             The gap limit is the maximum number of consecutive unused addresses in your deterministic sequence of
-            addresses. Reddcoin Electrum uses a gap limit to stop looking for addresses. This is set to 5 by default,
-            so the client generates new addresses until 5 unused addresses are found.
+            addresses. Reddcoin Electrum wallets use a gap limit of 5 by default, so they generate new addresses
+            until 5 unused addresses are found.
         </dd>
 
         <dt id="freeze-address">
             What does it mean to "freeze" an address?
         </dt>
         <dd>
-            When you freeze an address, the funds in that address will not be used for sending Reddcoin.
-            You cannot send Reddcoin if you don't have enough funds in non-frozen addresses.
+            When you freeze an address, Reddcoins in that address cannot be sent.
         </dd>
 
         <dt id="old-address">
-            What should I do with my old Reddcoin addresses when switching to Reddcoin Electrum?
+            What should I do with my old Reddcoin addresses when switching to Reddcoin Electrum wallets?
         </dt>
         <dd>
-            The best way to switch to Electrum is to send all your Reddcoin to one of the your Electrum addresses.
-            This way you'll have all your Reddcoin secured with your pass-phrase and will only need to keep your initial
-            passphrase backup. Keep in mind that sending all your Reddcoins will reset their coin age and be a minor
-            setback for staking.
+            The best way to switch to Reddcoin Electrum wallets is to send all your Reddcoins to one of your
+            Reddcoin Electrum addresses. This way you'll have all your Reddcoins secured with your seed
+            and fully recovered anywhere with it. Keep in mind that sending all your Reddcoins
+            will reset their coin age to zero and be a minor temporary setback for staking.
         </dd>
 
         <dt id="wallet-file">
-            Where is my wallet file located?
+            Where is my wallet file located on my PC?
         </dt>
         <dd>
-            A default wallet file called <kbd>default_wallet</kbd> is created under the <kbd>/wallets</kbd> directory
-            when you first run Reddcoin Electrum. On Windows, this folder is located in
-            <kbd>\Users\YourUserName\AppData\Roaming\Local\Electrum-reddcoin</kbd>.
-            On all other operating systems, it is located in <kbd>~/.electrum-reddcoin</kbd>.
+            A default wallet file called <kbd>default_wallet</kbd> is created under the <kbd>reddcoin-wallets</kbd>
+            folder when you first run a Reddcoin Electrum desktop wallet. On Windows, this folder is located in
+            <kbd>\Users\YourUserName\AppData\Roaming\Local\Reddcoin-Electrum</kbd>.
+            On all other operating systems, it is located in <kbd>~/.reddcoin-electrum</kbd>.
         </dd>
 
-        <dt id="mobile">Can I use Reddcoin Electrum on my phone?</dt>
+        <dt id="mobile">Can I use Reddcoin Electrum wallets on my smart phone?</dt>
         <dd>
-            Reddcoin Electrum for mobile devices is not currently available, but is under development and will be
-            ready soon.
+            Reddcoin Electrum mobile wallets are currently under active development and will be available soon.
         </dd>
-
     </dl>
 
 
     <br>
 
-    <h3 class="walletListHeader" id="contact">
+    <h4 class="walletListHeader" id="contact">
         Contact Us
-    </h3>
+    </h4>
 
     <hr>
 
     <p>
-        To contact the Reddcoin developers, email us at <a href="mailto:info@reddcoin.com">info@reddcoin.com</a>.
-        Alternatively, you can message the moderators of the <a href="https://reddit.com/r/Reddcoin">Reddcoin
+        To contact Reddcoin official developers, you can email us at <a href="mailto:info@reddcoin.com">info@reddcoin.com</a>
+        or message the moderators of <a href="https://reddit.com/r/Reddcoin">Reddcoin
         Subreddit</a>.
     </p>
 
     <p>
-        For technical support, you can ask questions on <a href="https://reddit.com/r/Reddcoin">Reddit</a> or in IRC
-        Freenode channels
+        For technical support, you can ask questions on <a href="https://reddit.com/r/Reddcoin">Reddcoin Subreddit</a>,
+        email us at <a href="mailto:info@reddcoin.com">support@reddcoin.com</a> or in our Freenode IRC channels
         <a href="http://webchat.freenode.net/?channels=reddcoin,reddcoin-electrum">
             #reddcoin and #reddcoin-electrum
-        </a>
+        </a>.
     </p>
+
+    <hr>
 
     <div id="spacer">
         &nbsp;
@@ -389,16 +328,19 @@ reddcoin-electrum
         </div>
 
         <p class="space-top">
-            Electrum and QT Wallet Source Available at github.
+            Reddcoin wallet source code available on github:
         </p>
-        <a href="https://github.com/reddcoin-project/reddcoin-electrum" class="small radius button">Electrum
-            Source</a>
-        <a href="https://github.com/reddcoin-project/reddcoin" class="small secondary radius button">QT Source</a>
+        <a href="https://github.com/reddcoin-project/reddcoin" class="small secondary radius button">
+            Reddcoin Core
+        </a>
+        <a href="https://github.com/reddcoin-project/reddcoin-electrum" class="small secondary radius button">
+            Reddcoin Electrum
+        </a>
     </div>
 
 
     <h3 class="walletListHeader" id="downloads">
-        Wallet Downloads
+        Wallet Download
     </h3>
 
     <hr>
@@ -410,19 +352,17 @@ reddcoin-electrum
             </div>
         </div>
         <div class="small-9 columns">
-            <a href="#" class="">
-                Windows Electrum Wallet
-            </a>
-            <br>
             <a href="https://github.com/reddcoin-project/reddcoin/releases/download/v1.3.1.2/reddcoin-1.3.1.2-win.zip"
                class="">
-                Windows QT Wallet
+                Windows QT wallet
             </a>
             <br>
             <a href="https://github.com/reddcoin-project/reddcoin/releases/download/v1.3.1.2/reddwallet-1.1.1-win.zip"
                class="">
-                Windows Social Wallet
+                Windows social wallet
             </a>
+            <br>
+                Windows Electrum wallet
         </div>
     </div>
 
@@ -433,19 +373,17 @@ reddcoin-electrum
             </div>
         </div>
         <div class="small-9 columns">
-            <a href="#" class="">
-                OSX Electrum Wallet
-            </a>
-            <br>
             <a href="https://github.com/reddcoin-project/reddcoin/releases/download/v1.3.1.2/reddcoin-1.3.1.2-mac.dmg"
                class="">
-                OSX QT Wallet
+                OSX QT wallet
             </a>
             <br>
             <a href="https://github.com/reddcoin-project/reddcoin/releases/download/v1.3.1.2/reddwallet-1.1.1-mac.dmg"
                class="">
-                OSX Social Wallet
+                OSX social wallet
             </a>
+            <br>
+                OSX Electrum wallet
         </div>
     </div>
 
@@ -456,23 +394,36 @@ reddcoin-electrum
             </div>
         </div>
         <div class="small-9 columns">
-            <a href="#" class="">
-                Linux Electrum Wallet
-            </a>
-            <br>
             <a href="https://github.com/reddcoin-project/reddcoin/releases/download/v1.3.1.2/reddcoin-1.3.1.2-linux.tar.gz"
                class="">
-                Linux QT Wallet
+                Linux QT wallet
             </a>
             <br>
             <a href="https://github.com/reddcoin-project/reddcoin/releases/download/v1.3.1.2/reddwallet-1.1.1-linux32.tar.gz"
                class="">
-                Linux Social Wallet (32 Bit)
+                Linux social wallet (32 Bit)
             </a>
             <br>
             <a href="https://github.com/reddcoin-project/reddcoin/releases/download/v1.3.1.2/reddwallet-1.1.1-linux64.tar.gz"
                class="">
-                Linux Social Wallet (64 Bit)
+                Linux social wallet (64 Bit)
+            </a>
+            <br>
+                Linux Electrum wallet
+        </div>
+    </div>
+
+    <div class="row space-top-big">
+        <div class="small-3 columns">
+            <div class="round bright">
+                <i class="fa fa-apple medium"></i>
+            </div>
+        </div>
+        <div class="small-9 columns">
+            <a class="space-top disabled">
+                iOS Electrum wallet
+                <br>
+                coming soon
             </a>
         </div>
     </div>
@@ -485,24 +436,9 @@ reddcoin-electrum
         </div>
         <div class="small-9 columns">
             <a class="space-top disabled">
-                Android Electrum
+                Android Electrum wallet
                 <br>
-                Coming Soon...
-            </a>
-        </div>
-    </div>
-
-    <div class="row space-top-big">
-        <div class="small-3 columns">
-            <div class="round bright">
-                <i class="fa fa-apple medium"></i>
-            </div>
-        </div>
-        <div class="small-9 columns">
-            <a class="space-top disabled">
-                iOS Electrum
-                <br>
-                Coming Soon...
+                coming soon
             </a>
         </div>
     </div>
