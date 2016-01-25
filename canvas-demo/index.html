@@ -42,7 +42,7 @@ precision mediump float;
   varying vec4 vColor;
 
   void main(void) {
-    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 0.5);
     vColor = aVertexColor;
   }
 

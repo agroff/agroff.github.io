@@ -1,10 +1,5 @@
-/**
- * Created By: Andrew Groff
- * Date: 1/24/16
- * Time: 12:13 PM
- */
-
 var gl;
+
 function initGL(canvas) {
     try {
         gl = canvas.getContext("experimental-webgl");
@@ -91,6 +86,7 @@ function mvPushMatrix() {
     mat4.set(mvMatrix, copy);
     mvMatrixStack.push(copy);
 }
+
 function mvPopMatrix() {
     if (mvMatrixStack.length == 0) {
         throw "Invalid popMatrix!";
@@ -98,68 +94,184 @@ function mvPopMatrix() {
     mvMatrix = mvMatrixStack.pop();
 }
 
+
 function setMatrixUniforms() {
     gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
 }
+
+
 function degToRad(degrees) {
     return degrees * Math.PI / 180;
 }
 
 
-var triangleVertexPositionBuffer;
-var triangleVertexColorBuffer;
-var squareVertexPositionBuffer;
-var squareVertexColorBuffer;
+var pyramidVertexPositionBuffer;
+var pyramidVertexColorBuffer;
+var starVertexPositionBuffer;
+var starVertexTextureCoordBuffer;
 
-function initBuffers() {
-    triangleVertexPositionBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
-    var vertices = [
-        0.0,  1.0,  0.0,
-        -1.0, -1.0,  0.0,
-        1.0, -1.0,  0.0
-    ];
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-    triangleVertexPositionBuffer.itemSize = 3;
-    triangleVertexPositionBuffer.numItems = 3;
+var dots = [];
 
-    triangleVertexColorBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer);
-    var colors = [
-        0.3, 1.0, 1.0, 0.1,
-        1.0, 0.0, 1.0, 0.1,
-        0.0, 0.0, 1.0, 0.1
-    ];
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
-    triangleVertexColorBuffer.itemSize = 4;
-    triangleVertexColorBuffer.numItems = 3;
+function drawDot() {
+    gl.activeTexture(gl.TEXTURE0);
+    gl.uniform1i(shaderProgram.samplerUniform, 0);
 
-    squareVertexPositionBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
-    vertices = [
-        1.0,  1.0,  0.0,
-        -1.0,  1.0,  0.0,
-        1.0, -1.0,  0.0,
-        -1.0, -1.0,  0.0
-    ];
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-    squareVertexPositionBuffer.itemSize = 3;
-    squareVertexPositionBuffer.numItems = 4;
+    gl.bindBuffer(gl.ARRAY_BUFFER, starVertexTextureCoordBuffer);
+    gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, starVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-    squareVertexColorBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexColorBuffer);
-    colors = [];
-    for (var i=0; i < 4; i++) {
-        colors = colors.concat([0.5, 0.5, 1.0, 1.0]);
-    }
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
-    squareVertexColorBuffer.itemSize = 4;
-    squareVertexColorBuffer.numItems = 4;
+    gl.bindBuffer(gl.ARRAY_BUFFER, starVertexPositionBuffer);
+    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, starVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+
+    setMatrixUniforms();
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, starVertexPositionBuffer.numItems);
 }
 
+
+
+function Dot(startingDistance, rotationSpeed) {
+    this.angle = 0;
+    this.dist = startingDistance;
+    this.rotationSpeed = rotationSpeed;
+
+    // Set the colors to a starting value.
+    this.randomiseColors();
+}
+
+Dot.prototype.draw = function (tilt, spin) {
+    mvPushMatrix();
+
+    // Move to the star's position
+    mat4.rotate(mvMatrix, degToRad(this.angle), [0.0, 1.0, 0.0]);
+    mat4.translate(mvMatrix, [this.dist, 0.0, 0.0]);
+
+    // Rotate back so that the star is facing the viewer
+    mat4.rotate(mvMatrix, degToRad(-this.angle), [0.0, 1.0, 0.0]);
+    mat4.rotate(mvMatrix, degToRad(-tilt), [1.0, 0.0, 0.0]);
+
+
+    // All stars spin around the Z axis at the same rate
+    mat4.rotate(mvMatrix, degToRad(spin), [0.0, 0.0, 1.0]);
+
+    // Draw the star in its main color
+    gl.uniform3f(shaderProgram.colorUniform, this.r, this.g, this.b);
+    drawDot();
+
+    mvPopMatrix();
+};
+
+
+var effectiveFPMS = 60 / 1000;
+Dot.prototype.animate = function (elapsedTime) {
+    this.angle += this.rotationSpeed * effectiveFPMS * elapsedTime;
+
+    // Decrease the distance, resetting the star to the outside of
+    // the spiral if it's at the center.
+    this.dist -= 0.01 * effectiveFPMS * elapsedTime;
+    if (this.dist < 0.0) {
+        this.dist += 5.0;
+        this.randomiseColors();
+    }
+
+};
+
+
+Dot.prototype.randomiseColors = function () {
+    // Give the star a random color for normal
+    // circumstances...
+    this.r = Math.random();
+    this.g = Math.random();
+    this.b = Math.random();
+};
+
+
+function initBuffers() {
+
+    starVertexPositionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, starVertexPositionBuffer);
+    vertices = [
+        -1.0, -1.0,  0.0,
+        1.0, -1.0,  0.0,
+        -1.0,  1.0,  0.0,
+        1.0,  1.0,  0.0
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+    starVertexPositionBuffer.itemSize = 3;
+    starVertexPositionBuffer.numItems = 4;
+
+    starVertexTextureCoordBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, starVertexTextureCoordBuffer);
+    var textureCoords = [
+        0.0, 0.0,
+        1.0, 0.0,
+        0.0, 1.0,
+        1.0, 1.0
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoords), gl.STATIC_DRAW);
+    starVertexTextureCoordBuffer.itemSize = 2;
+    starVertexTextureCoordBuffer.numItems = 4;
+
+
+    pyramidVertexPositionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
+    var vertices = [
+        // Front face
+        0.0,  1.0,  0.0,
+        -1.0, -1.0,  1.0,
+        1.0, -1.0,  1.0,
+
+        // Right face
+        0.0,  1.0,  0.0,
+        1.0, -1.0,  1.0,
+        1.0, -1.0, -1.0,
+
+        // Back face
+        0.0,  1.0,  0.0,
+        1.0, -1.0, -1.0,
+        -1.0, -1.0, -1.0,
+
+        // Left face
+        0.0,  1.0,  0.0,
+        -1.0, -1.0, -1.0,
+        -1.0, -1.0,  1.0
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+    pyramidVertexPositionBuffer.itemSize = 3;
+    pyramidVertexPositionBuffer.numItems = 12;
+
+    pyramidVertexColorBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
+    var opacity = 0.5
+    var colors = [
+        // Front face
+        1.0, 0.0, 0.0, opacity,
+        0.0, 1.0, 0.0, opacity,
+        0.0, 0.0, 1.0, opacity,
+
+        // Right face
+        1.0, 0.0, 0.0, opacity,
+        0.0, 0.0, 1.0, opacity,
+        0.0, 1.0, 0.0, opacity,
+
+        // Back face
+        1.0, 0.0, 0.0, opacity,
+        0.0, 1.0, 0.0, opacity,
+        0.0, 0.0, 1.0, opacity,
+
+        // Left face
+        1.0, 0.0, 0.0, 1.0,
+        0.0, 0.0, 1.0, 1.0,
+        0.0, 1.0, 0.0, 1.0
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+    pyramidVertexColorBuffer.itemSize = 4;
+    pyramidVertexColorBuffer.numItems = 12;
+
+
+}
+
+
 var rPyramid = 0;
-var rCube = 0;
 
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
@@ -169,39 +281,34 @@ function drawScene() {
 
     mat4.identity(mvMatrix);
 
-    mat4.translate(mvMatrix, [-1.5, 1.0, -7.0]);
+    mat4.translate(mvMatrix, [0, 0.0, -8.0]);
 
     mvPushMatrix();
     mat4.rotate(mvMatrix, degToRad(rPyramid), [0, 1, 0]);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
-    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
+    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, pyramidVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
+    gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
+    gl.vertexAttribPointer(shaderProgram.vertexColorAttribute, pyramidVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer);
-    gl.vertexAttribPointer(shaderProgram.vertexColorAttribute, triangleVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+    gl.enable(gl.BLEND);
+    gl.disable(gl.DEPTH_TEST);
+    gl.uniform1f(shaderProgram.alphaUniform, 0.5);
 
     setMatrixUniforms();
-    gl.drawArrays(gl.TRIANGLES, 0, triangleVertexPositionBuffer.numItems);
+    gl.drawArrays(gl.TRIANGLES, 0, pyramidVertexPositionBuffer.numItems);
 
     mvPopMatrix();
 
-    mat4.translate(mvMatrix, [3.0, 0.0, 0.0]);
+    for (var i in dots) {
+        dots[i].draw();
+    }
 
-    mvPushMatrix();
-    mat4.rotate(mvMatrix, degToRad(rCube), [1, 0, 0]);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
-    gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
-
-    gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexColorBuffer);
-    gl.vertexAttribPointer(shaderProgram.vertexColorAttribute, squareVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
-
-    setMatrixUniforms();
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
-
-    mvPopMatrix();
 }
+
 
 var lastTime = 0;
 
@@ -209,11 +316,16 @@ function animate() {
     var timeNow = new Date().getTime();
     if (lastTime != 0) {
         var elapsed = timeNow - lastTime;
-        rPyramid += (90 * elapsed) / 1000.0;
-        rCube += (75 * elapsed) / 1000.0;
+
+        rPyramid += (90 * elapsed) / 2000.0;
+
+        for (var i in dots) {
+            dots[i].animate(elapsed);
+        }
     }
     lastTime = timeNow;
 }
+
 
 function tick() {
     requestAnimFrame(tick);
@@ -221,15 +333,19 @@ function tick() {
     animate();
 }
 
+
 function webGLStart() {
     var canvas = document.getElementById("lesson01-canvas");
     initGL(canvas);
-    initShaders();
+    initShaders()
     initBuffers();
 
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
 
+    dots[0] = new Dot(0.2, 0.5);
+
     tick();
+
     APP.init();
 }
