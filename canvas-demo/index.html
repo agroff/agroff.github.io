@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Demo</title>
+
+
+    <script type="text/javascript" src="http://learningwebgl.com/lessons/lesson01/glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="http://learningwebgl.com/lessons/lesson03/webgl-utils.js"></script>
+
+    <script id="shader-fs" type="x-shader/x-fragment">
+precision mediump float;
+
+  varying vec4 vColor;
+
+  void main(void) {
+    gl_FragColor = vColor;
+  }
+    </script>
+
+    <script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec3 aVertexPosition;
+  attribute vec4 aVertexColor;
+
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+
+  varying vec4 vColor;
+
+  void main(void) {
+    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+    vColor = aVertexColor;
+  }
+
+    </script>
+
+    <script type="text/javascript" src="/canvas-demo/js/main.js"></script>
+</head>
+
+<body onload="webGLStart();">
+
+<canvas id="lesson01-canvas" style="border: none;" width="500" height="500"></canvas>
+
+<br/>
+<span>Testing Thing</span>
+<br/>
+</body>
+
+
+</html>
