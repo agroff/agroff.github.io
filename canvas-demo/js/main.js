@@ -83,6 +83,7 @@ function initShaders() {
 
 
 var mvMatrix = mat4.create();
+var mvMatrixStack = [];
 var pMatrix = mat4.create();
 
 function mvPushMatrix() {
@@ -126,9 +127,9 @@ function initBuffers() {
     triangleVertexColorBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer);
     var colors = [
-        1.0, 0.0, 0.0, 1.0,
-        0.0, 1.0, 0.0, 1.0,
-        0.0, 0.0, 1.0, 1.0
+        0.3, 1.0, 1.0, 0.1,
+        1.0, 0.0, 1.0, 0.1,
+        0.0, 0.0, 1.0, 0.1
     ];
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
     triangleVertexColorBuffer.itemSize = 4;
@@ -148,7 +149,7 @@ function initBuffers() {
 
     squareVertexColorBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexColorBuffer);
-    colors = []
+    colors = [];
     for (var i=0; i < 4; i++) {
         colors = colors.concat([0.5, 0.5, 1.0, 1.0]);
     }
@@ -157,8 +158,8 @@ function initBuffers() {
     squareVertexColorBuffer.numItems = 4;
 }
 
-var rTri = 0;
-var rSquare = 0;
+var rPyramid = 0;
+var rCube = 0;
 
 function drawScene() {
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
@@ -171,7 +172,7 @@ function drawScene() {
     mat4.translate(mvMatrix, [-1.5, 1.0, -7.0]);
 
     mvPushMatrix();
-    mat4.rotate(mvMatrix, degToRad(rTri), [0, 1, 0]);
+    mat4.rotate(mvMatrix, degToRad(rPyramid), [0, 1, 0]);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer);
     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -185,8 +186,11 @@ function drawScene() {
 
     mvPopMatrix();
 
+    mat4.translate(mvMatrix, [3.0, 0.0, 0.0]);
 
-    mat4.translate(mvMatrix, [2.5, -2.0, 2.0]);
+    mvPushMatrix();
+    mat4.rotate(mvMatrix, degToRad(rCube), [1, 0, 0]);
+
     gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer);
     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
@@ -195,6 +199,8 @@ function drawScene() {
 
     setMatrixUniforms();
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, squareVertexPositionBuffer.numItems);
+
+    mvPopMatrix();
 }
 
 var lastTime = 0;
@@ -203,8 +209,8 @@ function animate() {
     var timeNow = new Date().getTime();
     if (lastTime != 0) {
         var elapsed = timeNow - lastTime;
-        rTri += (90 * elapsed) / 1000.0;
-        rSquare += (75 * elapsed) / 1000.0;
+        rPyramid += (90 * elapsed) / 1000.0;
+        rCube += (75 * elapsed) / 1000.0;
     }
     lastTime = timeNow;
 }
@@ -221,8 +227,9 @@ function webGLStart() {
     initShaders();
     initBuffers();
 
-    gl.clearColor(0.4, 0.0, 0.0, 0.2);
+        gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
 
-    drawScene();
+    tick();
+    APP.init();
 }

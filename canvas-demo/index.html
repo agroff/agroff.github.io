@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <title>Canvas Demo</title>
 
+    <style type="text/css">
+        body{
+            background-color: black;
+            color:white;
+        }
+        canvas{
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 800px;
+        }
+    </style>
 
     <script type="text/javascript" src="http://learningwebgl.com/lessons/lesson01/glMatrix-0.9.5.min.js"></script>
     <script type="text/javascript" src="http://learningwebgl.com/lessons/lesson03/webgl-utils.js"></script>
@@ -35,15 +49,21 @@ precision mediump float;
     </script>
 
     <script type="text/javascript" src="/canvas-demo/js/main.js"></script>
+    <script type="text/javascript" src="/canvas-demo/js/custom.js"></script>
 </head>
 
 <body onload="webGLStart();">
 
-<canvas id="lesson01-canvas" style="border: none;" width="500" height="500"></canvas>
+<div class="canvasContainer">
 
+    <canvas id="lesson01-canvas" style="border: none;" width="800" height="600"></canvas>
+
+</div>
 <br/>
 <span>Testing Thing</span>
 <br/>
+
+
 </body>
 
 
