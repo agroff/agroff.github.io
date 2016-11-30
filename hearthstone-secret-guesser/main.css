@@ -1,36 +1,55 @@
 body {
-    padding-top: 50px;
-}
-.starter-template {
-    padding: 40px 0 0 0;
-    text-align: center;
-}
-select,
-select.form-control{
-    font-size:20px;
-    height:50px;
-}
-#class-select{
-    width:50%;
-    margin:auto;
+    padding-top : 50px;
 }
 
-.card{
-    float:left;
-    width:180px;
-    height:380px;
+.starter-template {
+    padding    : 40px 0 0 0;
+    text-align : center;
 }
-.card-image{
-    width:180px;
+
+.right {
+    float : right;
 }
-.card-info{
-    padding:2px 15px;
+
+.btn-primary {
+    margin : 5px;
 }
-.card-info p{
-    text-transform: capitalize;
+
+select,
+select.form-control {
+    font-size : 20px;
+    height    : 50px;
 }
-.card-info h4{
-    font-size: 14px;
-    margin-bottom: 2px;
-    margin-top: 0px;
+
+#class-select {
+    width  : 100%;
+    margin : auto;
+}
+
+#unavailable-cards, #available-cards, #trigger-interface, #mode-select {
+    display : none;
+}
+
+.card {
+    float  : left;
+    width  : 180px;
+    height : 380px;
+}
+
+.card-image {
+    width : 180px;
+}
+
+.card-info {
+    padding : 2px 15px;
+}
+
+.card-info p {
+    text-transform : capitalize;
+}
+
+.card-info h4 {
+    font-size     : 14px;
+    margin-bottom : 2px;
+    margin-top    : 0px;
 }

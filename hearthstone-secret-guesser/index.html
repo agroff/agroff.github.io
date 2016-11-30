@@ -40,22 +40,54 @@
 
 <div class="container">
 
-    <div class="starter-template form-group">
-        <select id="class-select" class="form-control">
-            <option value="">Choose your opponent...</option>
-            <option value="mage">I'm playing against a MAGE</option>
-            <option value="hunter">I'm playing against a HUNTER</option>
-            <option value="paladin">I'm playing against a PALADIN</option>
-        </select>
+    <div class=" starter-template row form-group">
+        <div class="column col-lg-6">
+            <select id="class-select" class="form-control">
+                <option value="">Choose your opponent...</option>
+                <option value="mage">I'm playing against a MAGE</option>
+                <option value="hunter">I'm playing against a HUNTER</option>
+                <option value="paladin">I'm playing against a PALADIN</option>
+            </select>
+        </div>
+        <div class="column col-lg-6">
+            <select id="mode-select" class="form-control">
+                <option value="standard">In STANDARD Mode</option>
+                <option value="mage">In WILD Mode</option>
+            </select>
+        </div>
     </div>
 
     <div id="trigger-interface">
-        <h2>
-            I Have Tried To...
-        </h2>
-        <div id="triggers-container">
-            Loading...
+
+
+        <div class="row">
+            <div class="column col-lg-6">
+                <h2>
+                    You Could Try To:
+                </h2>
+            </div>
+            <div class="column col-lg-6">
+                <h2>
+                    I Have Tried To:
+
+                    <button id="resetButton" class="btn right btn-xs btn-danger">Reset</button>
+                </h2>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="column col-lg-6">
+                <div id="triggers-container">
+                    Loading...
+                </div>
+            </div>
+            <div class="column col-lg-6">
+                <div id="triggered-container">
+                    Loading...
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
@@ -65,7 +97,8 @@
     <div id="unavailable-cards">
     </div>
 
-</div><!-- /.container -->
+</div>
+<!-- /.container -->
 
 
 <!-- Bootstrap core JavaScript
